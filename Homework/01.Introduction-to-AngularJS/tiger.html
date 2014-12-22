@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="MyFirstAngularApp">
+
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Tiger</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.js" defer></script>
+	<script src="js/app.js" defer></script>
+	<script src="js/controller.js" defer></script>
+</head>
+
+<body>
+
+<section ng-controller="Tiger" ng-style="wrapperStyle">
+	<div ng-style="block">
+		<h1 ng-style="bold">TIGER</h1>
+
+		<div><span ng-style="bold">Name:</span> {{tiger.name}}</div>
+		<div><span ng-style="bold">Born:</span> {{tiger.born}}</div>
+		<div><span ng-style="bold">Birth Date:</span> {{tiger.birthDate}}</div>
+		<div><span ng-style="bold">Live:</span> {{tiger.live}}</div>
+	</div>
+	<img src="{{imgUrl}}" alt="Tiger" ng-style="block"/>
+</section>
+
+</body>
+
+</html>
