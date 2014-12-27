@@ -1,0 +1,52 @@
+<div class="container-fluid">
+	<div class="row">
+		<div>
+			<!--TODO: Sidebar content and search-->
+		</div>
+		<div class="col-md-9 col-sm-12">
+			<ul class="list-group">
+				<li ng-repeat="video in videos | filter:query | orderBy:orderProp | filter:filterByCategory |
+          filter:filterBySubtitles" class="well">
+					<h3 class="text-primary">{{video.title}}</h3>
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" src="{{video.videoUrl | trusted}}" frameborder="0"></iframe>
+					</div>
+					<ul class="breadcrumb">
+						<li>Length: {{video.length}}</li>
+						<li>Category: <a href="#">{{video.category}}</a></li>
+						<li class="active">Subscribers: {{video.subscribers}}</li>
+						<br>
+						<li class="active">Subtitles: {{video.haveSubtitles | checkmark}}</li>
+						<li class="active">Date: {{video.date | date:"dd/mm/yyyy 'at' h:mma"}}</li>
+					</ul>
+					<h4>Comments:</h4>
+					<ul class="comments">
+						<li ng-repeat="comment in video.comments">
+							<div class="row well">
+								<div class="col-md-1">
+									<div ng-click="upVote(comment)" class="vote-button">
+										<span>&#9650</span>
+									</div>
+									<div class="badge badge-inverse">
+										{{comment.likes}}
+									</div>
+									<div ng-click="downVote(comment)" class="vote-button">
+										<span>&#9660</span>
+									</div>
+								</div>
+								<div class="col-md-11 comment-info">
+									<strong>Author: {{comment.username}}</strong>
+									<span class="pull-right">{{comment.date | date:"MM/dd/yyyy 'at' h:mma"}}</span>
+									<br/>
+									{{comment.content}}
+									<br/>Website:
+									<a href="{{comment.websiteUrl}}" target="_blanl">{{comment.websiteUrl}}</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
