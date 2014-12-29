@@ -1,5 +1,7 @@
-app.controller('Main', function ($scope) {
-    'use strict';
+'use strict';
 
-    // TODO
+var adsAppControllers = angular.module('adsAppControllers', []);
+
+adsAppControllers.controller('AdsController', function AdsController() { //Todo add dependencies in function
+
 });
