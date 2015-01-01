@@ -59,6 +59,11 @@
         [Route("Login")]
         public async Task<HttpResponseMessage> LoginUser(LoginUserBindingModel model)
         {
+            if (model == null)
+            {
+                model = new LoginUserBindingModel();
+            }
+
             // Invoke the "token" OWIN service to perform the login: /api/token
             // Ugly implementation: I use a server-side HTTP POST because I cannot directly invoke the service (it is deeply hidden in the OAuthAuthorizationServerHandler class)
             var request = HttpContext.Current.Request;
@@ -217,7 +222,8 @@
             {
                 pageSize = model.PageSize.Value;
             }
-            var numPages = (ads.Count() + pageSize - 1) / pageSize;
+            var numItems = ads.Count();
+            var numPages = (numItems + pageSize - 1) / pageSize;
             if (model.StartPage.HasValue)
             {
                 ads = ads.Skip(pageSize * (model.StartPage.Value - 1));
@@ -240,6 +246,7 @@
             return this.Ok(
                 new
                 {
+                    numItems,
                     numPages,
                     ads = adsToReturn
                 }

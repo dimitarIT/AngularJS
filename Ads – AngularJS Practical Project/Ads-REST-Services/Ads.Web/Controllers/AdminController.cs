@@ -106,7 +106,8 @@
             {
                 pageSize = model.PageSize.Value;
             }
-            var numPages = (ads.Count() + pageSize - 1) / pageSize;
+            var numItems = ads.Count();
+            var numPages = (numItems + pageSize - 1) / pageSize;
             if (model.StartPage.HasValue)
             {
                 ads = ads.Skip(pageSize * (model.StartPage.Value - 1));
@@ -135,6 +136,7 @@
             return this.Ok(
                 new
                 {
+                    numItems,
                     numPages,
                     ads = adsToReturn
                 }
@@ -309,7 +311,7 @@
             }
 
             // Select all users along with their roles
-            var users = this.Data.Users.All().Include(u => u.Roles);
+            var users = this.Data.Users.All().Include(u => u.Roles).Include(u => u.Town);
 
             // Apply sorting by the specified column / expression (prefix '-' for descending)
             if (model.SortBy != null)
@@ -343,7 +345,8 @@
             {
                 pageSize = model.PageSize.Value;
             }
-            var numPages = (users.Count() + pageSize - 1) / pageSize;
+            var numItems = users.Count();
+            var numPages = (numItems + pageSize - 1) / pageSize;
             if (model.StartPage.HasValue)
             {
                 users = users.Skip(pageSize * (model.StartPage.Value - 1));
@@ -361,12 +364,15 @@
                 name = u.Name,
                 email = u.Email,
                 phoneNumber = u.PhoneNumber,
+                townId = u.TownId,
+                townName = u.TownId != null ? u.Town.Name : null,
                 isAdmin = u.Roles.Any(r => r.RoleId == adminRoleId)
             });
 
             return this.Ok(
                 new
                 {
+                    numItems,
                     numPages,
                     users = usersToReturn
                 }
@@ -555,7 +561,8 @@
             {
                 pageSize = model.PageSize.Value;
             }
-            var numPages = (categories.Count() + pageSize - 1) / pageSize;
+            var numItems = categories.Count();
+            var numPages = (numItems + pageSize - 1) / pageSize;
             if (model.StartPage.HasValue)
             {
                 categories = categories.Skip(pageSize * (model.StartPage.Value - 1));
@@ -572,6 +579,7 @@
             return this.Ok(
                 new
                 {
+                    numItems,
                     numPages,
                     categories = categoriesToReturn
                 }
@@ -715,7 +723,8 @@
             {
                 pageSize = model.PageSize.Value;
             }
-            var numPages = (towns.Count() + pageSize - 1) / pageSize;
+            var numItems = towns.Count();
+            var numPages = (numItems + pageSize - 1) / pageSize;
             if (model.StartPage.HasValue)
             {
                 towns = towns.Skip(pageSize * (model.StartPage.Value - 1));
@@ -732,6 +741,7 @@
             return this.Ok(
                 new
                 {
+                    numItems,
                     numPages,
                     towns = townsToReturn
                 }
