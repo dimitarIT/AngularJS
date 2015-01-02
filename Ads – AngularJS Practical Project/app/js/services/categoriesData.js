@@ -1,7 +1,7 @@
 'use strict';
 
 adsApp.factory('categoriesData', function categoriesData($http, $q, baseUrl) {
-    function getAllCategories(success, error) {
+    function getAllCategories() {
         var deferred = $q.defer();
 
         $http({
