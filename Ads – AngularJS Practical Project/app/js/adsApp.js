@@ -14,6 +14,14 @@ adsApp.config(['$routeProvider',
                 templateUrl: 'templates/home.html',
                 controller: 'HomeController'
             }).
+            when('/login', {
+                templateUrl: 'templates/login.html',
+                controller: 'HomeController'
+            }).
+            when('/register', {
+                templateUrl: 'templates/register.html',
+                controller: 'HomeController'
+            }).
             otherwise({
                 redirectTo: '/home'
             });
