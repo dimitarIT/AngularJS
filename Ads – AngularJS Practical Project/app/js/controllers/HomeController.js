@@ -20,7 +20,7 @@ adsAppControllers.controller('HomeController',
             currentTownId = '',
             currentPage = 1;
 
-        adsData.getAll(1, currentTownId, currentCategoryId)
+        adsData.getAll(currentPage, currentTownId, currentCategoryId)
             .then(function (data) {
                 $scope.adsData = data;
                 $scope.totalAds = parseInt(data.numPages) * 5;
