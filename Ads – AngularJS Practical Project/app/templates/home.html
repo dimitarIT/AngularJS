@@ -50,14 +50,25 @@
 
 <div class="row">
 	<div class="col-md-10">
-		<div class="all-ads-list">
-			<ul ng-repeat="ads in adsData">
-				<li ng-repeat="ad in ads" class="all-ads-list">
-					{{ad.id}} - {{ad.title}} <br/>
-					{{ad.date}} - {{ad.ownerName}} <br/>
-					{{ad.ownerEmail}} - {{ad.ownerPhone}}
-				</li>
-			</ul>
-		</div>
+
+		<ul class="all-ads-list">
+			<li ng-repeat="ad in adsData.ads"
+				dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage" total-items="totalAds"
+				class="well">
+				{{ad.id}} - {{ad.title}} <br/>
+				{{ad.date}} - {{ad.ownerName}} <br/>
+				{{ad.ownerEmail}} - {{ad.ownerPhone}}
+			</li>
+		</ul>
+
+	</div>
+</div>
+
+<div class="row pagination-div">
+	<div class='col-md-9 col-sm-10 col-xs-12 col-centered'>
+		<dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)"
+								 template-url="templates/dirPagination.tpl.html">
+
+		</dir-pagination-controls>
 	</div>
 </div>

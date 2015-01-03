@@ -18,19 +18,32 @@ adsAppControllers.controller('HomeController',
 
         var currentCategoryId = '',
             currentTownId = '',
-            currentPage = 1,
-            pageNumber = 1;
+            currentPage = 1;
 
-        adsData.getAll(pageNumber, currentTownId, currentCategoryId)
-            .then(function (data) {
-                $scope.adsData = data;
-                $scope.totalAds = parseInt(data.numPages) * 5;
-                currentPage = pageNumber;
-            }, function (error) {
-                $scope.errorOccurred = true;
-                $scope.alertMsg = ajaxErrorText;
-            });
+        $scope.totalAds = 0;
+        $scope.adsPerPage = 5;
+        getResultsPage(1);
 
+        $scope.pagination = {
+            current: 1
+        };
+
+        $scope.pageChanged = function (newPage) {
+            getResultsPage(newPage);
+        };
+
+        function getResultsPage(pageNumber) {
+            adsData.getAll(pageNumber, currentTownId, currentCategoryId)
+                .then(function (data) {
+                    $scope.adsData = data;
+                    $scope.totalAds = parseInt(data.numPages) * 5;
+                    currentPage = pageNumber;
+                }, function (error) {
+                    $scope.errorOccurred = true;
+                    $scope.alertMsg = ajaxErrorText;
+                });
+
+        }
 
         categoriesData.getAll()
             .then(function (data) {
