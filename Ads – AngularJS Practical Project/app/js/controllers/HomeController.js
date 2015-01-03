@@ -3,7 +3,7 @@
 var adsAppControllers = angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('HomeController',
-    function homeController($scope, $http, adsData, categoriesData) {
+    function homeController($scope, $http, adsData, categoriesData, townsData) {
         // TODO Check for Errors
         $scope.errorOccured = false;
         $scope.alertMsg = '';
@@ -18,17 +18,19 @@ adsAppControllers.controller('HomeController',
 
         var currentCategoryId = '',
             currentTownId = '',
-            currentPage = 1;
+            currentPage = 1,
+            pageNumber = 1;
 
-        adsData.getAll(currentPage, currentTownId, currentCategoryId)
+        adsData.getAll(pageNumber, currentTownId, currentCategoryId)
             .then(function (data) {
                 $scope.adsData = data;
                 $scope.totalAds = parseInt(data.numPages) * 5;
-                currentPage = 1;
+                currentPage = pageNumber;
             }, function (error) {
                 $scope.errorOccurred = true;
                 $scope.alertMsg = ajaxErrorText;
             });
+
 
         categoriesData.getAll()
             .then(function (data) {
@@ -37,4 +39,22 @@ adsAppControllers.controller('HomeController',
                 $scope.errorOccurred = true;
                 $scope.alertMsg = ajaxErrorText;
             });
+
+        townsData.getAll()
+            .then(function (data) {
+                $scope.townsData = data;
+            }, function (error) {
+                $scope.errorOccurred = true;
+                $scope.alertMsg = ajaxErrorText;
+            });
+
+
+        $scope.filterByCategory = function () {
+
+        };
+
+        $scope.filterByTown = function () {
+
+        };
+
     });
