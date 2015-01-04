@@ -1,3 +1,12 @@
 .all-ads-list {
 	list-style-type: none;
 }
+.nav, .pagination, .carousel, .panel-title a, a {
+	cursor: pointer;
+}
+
+.col-centered{
+	float: none;
+	margin: 0 auto;
+	padding: 0 auto;
+}

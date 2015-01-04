@@ -7,7 +7,7 @@ adsApp.factory('adsData', function adsData($http, $q, baseUrl) { // TODO add aut
 
         $http({
             method: 'GET',
-            url: baseUrl + '/ads?pagesize=5&startpage=' + pageNumber + '&TownId=' + townId + '&CategoryId=' + categoryId
+            url: baseUrl + '/ads?pagesize=3&startpage=' + pageNumber + '&TownId=' + townId + '&CategoryId=' + categoryId
         })
             .success(function (data, status, headers, config) {
                 deferred.resolve(data, status, headers, config);

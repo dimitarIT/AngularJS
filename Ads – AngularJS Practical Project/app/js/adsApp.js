@@ -4,6 +4,7 @@ var adsApp = angular.module('adsApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
+    'angularUtils.directives.dirPagination',
     'adsAppControllers'
 ]);
 

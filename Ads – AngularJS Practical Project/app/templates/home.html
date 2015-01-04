@@ -13,29 +13,22 @@
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li class="divider"></li>
-					<li class="dropdown-header">Dropdown header</li>
-					<li><a href="#">Separated link</a></li>
-					<li><a href="#">One more separated link</a></li>
+					<li><a href="#">All</a></li>
+					<li ng-repeat="categories in categoriesData">
+						<a href="#">{{categories.name}}</a>
+					</li>
 				</ul>
 			</li>
 
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown">Towns <b class="caret"></b></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li class="divider"></li>
-					<li class="dropdown-header">Dropdown header</li>
-					<li><a href="#">Separated link</a></li>
-					<li><a href="#">One more separated link</a></li>
+					<li><a href="#">All</a></li>
+					<li ng-repeat="town in townsData">
+						<a href="#">{{town.name}}</a>
+					</li>
 				</ul>
 			</li>
-
 		</ul>
 
 		<form class="navbar-form navbar-right">
@@ -48,27 +41,26 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-md-10">
-
-		<ul class="all-ads-list">
-			<li ng-repeat="ad in adsData.ads"
-				dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage" total-items="totalAds"
-				class="well">
-				{{ad.id}} - {{ad.title}} <br/>
-				{{ad.date}} - {{ad.ownerName}} <br/>
-				{{ad.ownerEmail}} - {{ad.ownerPhone}}
-			</li>
-		</ul>
-
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-8 col-centered">
+			<ul class="all-ads-list">
+				<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage"
+					total-items="totalAds" class="well">
+					{{ad.id}} - {{ad.title}} <br/>
+					{{ad.date}} - {{ad.ownerName}} <br/>
+					{{ad.ownerEmail}} - {{ad.ownerPhone}}
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>
 
 <div class="row pagination-div">
-	<div class='col-md-9 col-sm-10 col-xs-12 col-centered'>
-		<dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)"
-								 template-url="templates/dirPagination.tpl.html">
-
+	<div class='col-md-4 col-sm-10 col-xs-12 col-centered'>
+		<dir-pagination-controls
+				boundary-links="true" on-page-change="pageChanged(newPageNumber)"
+				template-url="templates/dirPagination.tpl.html">
 		</dir-pagination-controls>
 	</div>
 </div>
