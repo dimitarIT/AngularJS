@@ -4,7 +4,7 @@
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-responsive-collapse">
 			</button>
-			<a class="navbar-brand" href="#/home/">Ads App</a>
+			<a class="navbar-brand" href="#/home/">Ads - Home</a>
 		</div>
 
 		<div class="navbar-collapse collapse navbar-responsive-collapse">
@@ -15,53 +15,74 @@
 		</div>
 	</div>
 
-	<div class="jumbotron">
+	<div class="jumbotron col-lg-10 col-centered">
 		<div class="row">
-			<div class="col-md-8 ">
+			<div class="col-lg-8">
 				<ul class="all-ads-list">
 					<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage"
 						total-items="totalAds" class="well">
-						{{ad.id}} - {{ad.title}} <br/>
-						{{ad.date}} - {{ad.ownerName}} <br/>
-						{{ad.ownerEmail}} - {{ad.ownerPhone}}
+						<div class="row">
+							<div class="col-lg-8 ">
+								<h3 class="ad-title">{{ad.title}}</h3>
+							</div>
+							<div class="col-lg-4 pull-right">
+								<span class="text-info pull-right"> {{ad.date | date:"EEE dd-MMM-yyyy"}} </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-4 ad-image-container">
+								<img src="../img/no_image_available.svg" ng-src="{{ad.imageDataUrl}}" alt=""
+									 class="ad-image img-responsive">
+							</div>
+							<div class="col-lg-8">
+								<p class="well well-sm ad-info-paragraph"> {{ad.text}} </p>
+
+								<div class="row">
+									<div class="col-lg-2 ad-info-text"><strong>Name: </strong></div>
+									<div class="col-lg-9  well well-sm">{{ad.ownerName}}</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-2 ad-info-text"><strong>Email: </strong></div>
+									<div class="col-lg-9 well well-sm">
+										<a href="mailto:{{ad.ownerEmail}}">{{ad.ownerEmail}}</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-2 ad-info-text"><strong>Tel: </strong></div>
+									<div class="col-lg-9  well well-sm">{{ad.ownerPhone}}</div>
+								</div>
+							</div>
+						</div>
 					</li>
 				</ul>
 			</div>
-
-			<div class="col-md-4">
-				<div class="btn-group open col-md-6">
-					<a class="btn btn-primary">Categories</a>
-					<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-					   aria-expanded="true"><span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">All</a></li>
-						<li ng-repeat="categories in categoriesData">
-							<a href="#">{{categories.name}}</a>
-						</li>
-					</ul>
+			<div class="col-lg-4">
+				<div class="col-lg-6">
+					<div class="btn-group-vertical">
+						<a href="#" class="btn btn-default"><h3>Categories</h3></a>
+						<a href="#" class="btn btn-default">All</a>
+						<a href="#" class="btn btn-default"
+						   ng-repeat="categories in categoriesData">{{categories.name}}</a>
+					</div>
 				</div>
-				<div class="btn-group open col-md-6">
-					<a class="btn btn-primary">Town</a>
-					<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-					   aria-expanded="true"><span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">All</a></li>
-						<li ng-repeat="towns in townsData">
-							<a href="#">{{towns.name}}</a>
-						</li>
-					</ul>
+				<div class="col-lg-6">
+					<div class="btn-group-vertical">
+						<a href="#" class="btn btn-default"><h3>Towns</h3></a>
+						<a href="#" class="btn btn-default">All</a>
+						<a href="#" class="btn btn-default" ng-repeat="towns in townsData">{{towns.name}}</a>
+					</div>
 				</div>
 			</div>
-
 		</div>
-	</div>
-
-	<div class="row pagination-div">
-		<div class='col-md-4 col-sm-10 col-xs-12 col-centered'>
-			<dir-pagination-controls
-					boundary-links="true" on-page-change="pageChanged(newPageNumber)"
-					template-url="templates/dirPagination.tpl.html">
-			</dir-pagination-controls>
+		<div class="row">
+			<div class="row pagination-div">
+				<div class='col-lg-6 col-centered'>
+					<dir-pagination-controls
+							boundary-links="true" on-page-change="pageChanged(newPageNumber)"
+							template-url="templates/dirPagination.tpl.html">
+					</dir-pagination-controls>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
