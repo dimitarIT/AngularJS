@@ -16,6 +16,10 @@
 	</div>
 
 	<div class="jumbotron col-lg-10 col-centered">
+		<div class="row col centered" ng-if="noAdsToDisplay">
+			<h2 class="text-info text-center">No ads!</h2>
+		</div>
+
 		<div class="row">
 			<div class="col-lg-8">
 				<ul class="all-ads-list">
@@ -59,20 +63,26 @@
 			<div class="col-lg-4">
 				<div class="col-lg-6">
 					<div class="btn-group-vertical">
-						<a href="#" class="btn btn-default"><h3>Categories</h3></a>
-						<a href="#" class="btn btn-default">All</a>
-						<a href="#" class="btn btn-default"
-						   ng-repeat="categories in categoriesData">{{categories.name}}</a>
+						<a class="btn btn-default"><h3>Categories</h3></a>
+						<a ng-click="filterByCategory('', 'Category')" class="btn btn-default">All</a>
+						<a ng-click="filterByCategory(category.id, category.name)"
+						   ng-repeat="category in categoriesData"
+						   class="btn btn-default">
+							{{category.name}}</a>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="btn-group-vertical">
-						<a href="#" class="btn btn-default"><h3>Towns</h3></a>
-						<a href="#" class="btn btn-default">All</a>
-						<a href="#" class="btn btn-default" ng-repeat="towns in townsData">{{towns.name}}</a>
+						<a class="btn btn-default"><h3>Towns</h3></a>
+						<a ng-click="filterByTown('', 'Town')" class="btn btn-default">All</a>
+						<a ng-click="filterByTown(town.id, town.name)"
+						   ng-repeat="town in townsData"
+						   class="btn btn-default">
+							{{town.name}}</a>
 					</div>
 				</div>
 			</div>
+
 		</div>
 		<div class="row">
 			<div class="row pagination-div">

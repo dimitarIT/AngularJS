@@ -3,15 +3,13 @@
 var adsAppControllers = angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('HomeController',
-    function homeController($scope, $http, adsData, categoriesData, townsData) {
-        // TODO Check for Errors
+    function homeController($scope, $http, $rootScope, adsData, categoriesData, townsData) {
+        $scope.loading = true;
+        $scope.noAdsToDisplay = false;
+
         $scope.errorOccured = false;
         $scope.alertMsg = '';
         var ajaxErrorText = 'Something went wrong, please try again or refresh the page.';
-
-        $scope.closeAlert = function () {
-            $scope.errorOccurred = false;
-        };
 
         $scope.townFilter = 'Town';
         $scope.categoryFilter = 'Category';
@@ -28,20 +26,22 @@ adsAppControllers.controller('HomeController',
             current: 1
         };
 
-        $scope.pageChanged = function(newPage) {
+        $scope.pageChanged = function (newPage) {
             getResultsPage(newPage);
         };
 
         function getResultsPage(pageNumber) {
             adsData.getAll(pageNumber, currentTownId, currentCategoryId)
-                .then(function(data) {
-                $scope.adsData = data;
-                $scope.totalAds = parseInt(data.numPages) * 3;
-                currentPage = pageNumber;
-            }, function(error) {
-                $scope.errorOccurred = true;
-                $scope.alertMsg = ajaxErrorText;
-            });
+                .then(function (data) {
+                    $scope.loading = true;
+                    $scope.adsData = data;
+                    $scope.totalAds = parseInt(data.numPages) * 3;
+                    currentPage = pageNumber;
+                }, function (error) {
+                    $rootScope.$broadcast('errorHandle', ajaxErrorText);
+                }).finally(function () {
+                    $scope.loading = false;
+                });
         }
 
 
@@ -49,8 +49,7 @@ adsAppControllers.controller('HomeController',
             .then(function (data) {
                 $scope.categoriesData = data;
             }, function (error) {
-                $scope.errorOccurred = true;
-                $scope.alertMsg = ajaxErrorText;
+                $rootScope.$broadcast('errorHandle', ajaxErrorText);
             });
 
         townsData.getAll()
@@ -62,12 +61,44 @@ adsAppControllers.controller('HomeController',
             });
 
 
-        $scope.filterByCategory = function () {
+        $scope.filterByCategory = function (categoryId, categoryName) {
+            adsData.getByCategory(categoryId, currentTownId, currentPage)
+                .then(function (data) {
+                    $scope.noAdsToDisplay = false;
+                    $scope.loading = true;
+                    $scope.adsData = data;
 
+                    if (data.ads.length === 0) {
+                        $scope.noAdsToDisplay = true;
+                    }
+
+                    $scope.totalAds = parseInt(data.numPages) * 3;
+                    $scope.categoryFilter = categoryName;
+                    currentCategoryId = categoryId;
+                }, function (error) {
+                    $rootScope.$broadcast('errorHandle', ajaxErrorText);
+                }).finally(function () {
+                    $scope.loading = false;
+                });
         };
 
-        $scope.filterByTown = function () {
+        $scope.filterByTown = function (townId, townName) {
+            adsData.getByTown(townId, currentCategoryId, currentPage).then(function (data) {
+                $scope.noAdsToDisplay = false;
+                $scope.loading = true;
+                $scope.adsData = data;
 
+                if (data.ads.length === 0) {
+                    $scope.noAdsToDisplay = true;
+                }
+
+                $scope.totalAds = parseInt(data.numPages) * 3;
+                $scope.townFilter = townName;
+                currentTownId = townId;
+            }, function (error) {
+                $rootScope.$broadcast('errorHandle', ajaxErrorText);
+            }).finally(function () {
+                $scope.loading = false;
+            });
         };
-
     });
