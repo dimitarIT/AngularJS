@@ -1,17 +1,17 @@
 .all-ads-list {
 	list-style-type: none;
 }
+
 .nav, .pagination, .carousel, .panel-title a, a {
 	cursor: pointer;
 }
 
-.col-centered{
+.col-centered {
 	float: none;
 	margin: 0 auto;
 	padding: 0 auto;
 }
 
-.filters{
-	margin: 15px auto;
-	padding: 15px auto;
+.footer{
+	padding-left: 35%;
 }
