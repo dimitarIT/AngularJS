@@ -1,36 +1,48 @@
 <div class="col-lg-8 col-centered">
-	<form class="form-horizontal">
+	<form class="form-horizontal" name="registerForm">
 		<fieldset>
 			<legend>Register</legend>
 			<div class="form-group">
-				<label for="userName" class="col-lg-2 control-label">Username</label>
+				<label for="userName" class="col-lg-2 control-label">
+					Username<b class="text-danger">*</b>
+				</label>
 
 				<div class="col-lg-10">
-					<input type="text" class="form-control" id="userName" placeholder="Username">
+					<input type="text" class="form-control" id="userName"
+						   placeholder="Username" required ng-model="credentials.username">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="inputName" class="col-lg-2 control-label">Name</label>
+				<label for="inputName" class="col-lg-2 control-label">
+					Name<b class="text-danger">*</b>
+				</label>
 
 				<div class="col-lg-10">
-					<input type="text" class="form-control" id="inputName" placeholder="Full name">
+					<input type="text" class="form-control" id="inputName"
+						   placeholder="Full name" required ng-model="credentials.name">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="inputEmail" class="col-lg-2 control-label">Email</label>
+				<label for="inputEmail" class="col-lg-2 control-label">
+					Email<b class="text-danger">*</b>
+				</label>
 
 				<div class="col-lg-10">
-					<input type="text" class="form-control" id="inputEmail" placeholder="Email">
+					<input type="text" class="form-control" id="inputEmail"
+						   placeholder="Email" required>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="inputPhone" class="col-lg-2 control-label">Phone</label>
+				<label for="inputPhone" class="col-lg-2 control-label">
+					Phone<b class="text-danger">*</b>
+				</label>
 
 				<div class="col-lg-10">
-					<input type="text" class="form-control" id="inputPhone" placeholder="Phone">
+					<input type="text" class="form-control" id="inputPhone"
+						   placeholder="Phone" required>
 				</div>
 			</div>
 
@@ -46,27 +58,40 @@
 			</div>
 
 			<div class="form-group">
-				<label for="inputPassword" class="col-lg-2 control-label">Password</label>
+				<label for="inputPassword" class="col-lg-2 control-label">
+					Password<b class="text-danger">*</b>
+				</label>
 
 				<div class="col-lg-10">
-					<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+					<input type="password" class="form-control" id="inputPassword"
+						   placeholder="Password" required>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="confirmPassword" class="col-lg-2 control-label ">Confirm password</label>
+				<label for="confirmPassword" class="col-lg-2 control-label ">
+					Confirm password<b class="text-danger">*</b>
+				</label>
 
 				<div class="col-lg-10">
-					<input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
+					<input type="password" class="form-control" id="confirmPassword"
+						   placeholder="Confirm password" required>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="col-lg-10 col-lg-offset-2">
-					<button type="submit" class="btn btn-primary">Register</button>
-					<button class="btn btn-default">Login</button>
+					<button name="login" ng-click="register(credentials, registerForm)" type="submit"
+							class="btn btn-primary"
+							ng-disabled="loginForm.$invalid" ng-click="login()">
+						Register
+					</button>
+					<a class="btn btn-default" href="#/login">Login</a>
+					<a class="btn btn-default" href="#/home">Cancel</a>
 				</div>
 			</div>
 		</fieldset>
 	</form>
 </div>
+
+<!--TODO add credentials in form!!!!!!!!!!!!!!!!!!!!!!!!!-->
