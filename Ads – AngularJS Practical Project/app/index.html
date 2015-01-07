@@ -12,11 +12,13 @@
 </head>
 
 <body data-ng-app="adsApp" data-ng-controller="MainController" data-ng-cloak>
-<!-- TODO: ng-controller="HomeController" or Add MainController -->
-<main>
-<div class="col-lg-12" data-ng-view>
-	<!--All views-->
-</div>
+
+<main class="col-lg-12">
+	<div data-ng-include="'./templates/partials/header.html'"></div>
+	<div data-ng-include="'./templates/partials/left-sidebar.html'"></div>
+	<div data-ng-view>
+		<!--All views-->
+	</div>
 </main>
 <footer>
 	<div class="panel panel-default">

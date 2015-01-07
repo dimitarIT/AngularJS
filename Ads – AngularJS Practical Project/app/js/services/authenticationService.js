@@ -39,30 +39,30 @@ adsApp.factory('authenticationService',
             return deferred.promise;
         }
 
-        //function logout() {
-        //    var deferred = $q.defer();
-        //    headers = authorizationService.getAuthorizationHeaders();
-        //    $http({
-        //        method: 'POST',
-        //        url: baseUrl + '/user/logout',
-        //        data: {},
-        //        headers: headers
-        //    })
-        //        .success(function (data, status, headers, config) {
-        //            authorizationService.deleteAuthorizationHeaders();
-        //            delete sessionStorage['currentUser'];
-        //            deferred.resolve(data, status, headers, config);
-        //        })
-        //        .error(function (data, status, headers, config) {
-        //            deferred.reject(data, status, headers, config);
-        //        });
-        //
-        //    return deferred.promise;
-        //}
+        function logout() {
+            var deferred = $q.defer();
+            var headers = authorizationService.getAuthorizationHeaders();
+            $http({
+                method: 'POST',
+                url: baseUrl + '/user/logout',
+                data: {},
+                headers: headers
+            })
+                .success(function (data, status, headers, config) {
+                    authorizationService.deleteAuthorizationHeaders();
+                    delete sessionStorage['currentUser'];
+                    deferred.resolve(data, status, headers, config);
+                })
+                .error(function (data, status, headers, config) {
+                    deferred.reject(data, status, headers, config);
+                });
+
+            return deferred.promise;
+        }
 
         return {
             register: register,
             login: login,
-            //logout: logout
+            logout: logout
         }
     });

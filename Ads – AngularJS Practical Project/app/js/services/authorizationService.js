@@ -8,7 +8,7 @@ adsApp.factory('authorizationService',
         var accessToken;
         var userObject;
 
-        function setUserSession() {
+        function setUserSession(data) {
             userSession = {
                 accessToken: data.access_token,
                 username: data.username
@@ -24,7 +24,7 @@ adsApp.factory('authorizationService',
             }
         }
 
-        function getUserName() {
+        function getUsername() {
             userData = sessionStorage['currentUser'];
             if (userData) {
                 userObject = JSON.parse(sessionStorage['currentUser']);
@@ -64,7 +64,7 @@ adsApp.factory('authorizationService',
         return {
             setUserSession: setUserSession,
             getCurrentUser: getCurrentUser,
-            getUserName: getUserName,
+            getUsername: getUsername,
             getAccessToken: getAccessToken,
             userIsLogged: userIsLogged,
             getAuthorizationHeaders: getAuthorizationHeaders,

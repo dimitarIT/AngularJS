@@ -1,15 +1,15 @@
 'use strict';
-
+// TODO: ADD Errors
 var adsAppControllers = adsAppControllers || angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('HomeController',
-    function homeController($scope, $http, $rootScope, adsData, categoriesData, townsData) {
+    function homeController($scope, $http, $rootScope,
+                            adsData, categoriesData, townsData) {
         $scope.loading = true;
         $scope.noAdsToDisplay = false;
 
         $scope.errorOccured = false;
         $scope.alertMsg = '';
-        var ajaxErrorText = 'Something went wrong, please try again or refresh the page.';
 
         $scope.townFilter = 'Town';
         $scope.categoryFilter = 'Category';
@@ -38,7 +38,7 @@ adsAppControllers.controller('HomeController',
                     $scope.totalAds = parseInt(data.numPages) * 3;
                     currentPage = pageNumber;
                 }, function (error) {
-                    $rootScope.$broadcast('errorHandle', ajaxErrorText);
+                    $rootScope.$broadcast('errorHandle');
                 }).finally(function () {
                     $scope.loading = false;
                 });
@@ -49,7 +49,7 @@ adsAppControllers.controller('HomeController',
             .then(function (data) {
                 $scope.categoriesData = data;
             }, function (error) {
-                $rootScope.$broadcast('errorHandle', ajaxErrorText);
+                $rootScope.$broadcast('errorHandle');
             });
 
         townsData.getAll()
@@ -57,7 +57,7 @@ adsAppControllers.controller('HomeController',
                 $scope.townsData = data;
             }, function (error) {
                 $scope.errorOccurred = true;
-                $scope.alertMsg = ajaxErrorText;
+                $scope.alertMsg = '' ;
             });
 
 
@@ -76,7 +76,7 @@ adsAppControllers.controller('HomeController',
                     $scope.categoryFilter = categoryName;
                     currentCategoryId = categoryId;
                 }, function (error) {
-                    $rootScope.$broadcast('errorHandle', ajaxErrorText);
+                    $rootScope.$broadcast('errorHandle');
                 }).finally(function () {
                     $scope.loading = false;
                 });
@@ -96,7 +96,7 @@ adsAppControllers.controller('HomeController',
                 $scope.townFilter = townName;
                 currentTownId = townId;
             }, function (error) {
-                $rootScope.$broadcast('errorHandle', ajaxErrorText);
+                $rootScope.$broadcast('errorHandle');
             }).finally(function () {
                 $scope.loading = false;
             });

@@ -17,15 +17,15 @@ adsApp.config(['$routeProvider',
             }).
             when('/login', {
                 templateUrl: 'templates/login.html',
-                controller: 'HomeController'
+                controller: 'LoginController'
             }).
             when('/register', {
                 templateUrl: 'templates/register.html',
-                controller: 'HomeController'
+                controller: 'RegisterController'
             }).
             otherwise({
                 redirectTo: '/home'
             });
     }
 ])
-    .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/');
+    .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
