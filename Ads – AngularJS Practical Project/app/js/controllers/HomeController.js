@@ -1,6 +1,6 @@
 'use strict';
 
-var adsAppControllers = angular.module('adsAppControllers', []);
+var adsAppControllers = adsAppControllers || angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('HomeController',
     function homeController($scope, $http, $rootScope, adsData, categoriesData, townsData) {
