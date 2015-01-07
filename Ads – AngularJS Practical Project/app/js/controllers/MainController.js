@@ -36,6 +36,15 @@ adsApp.controller('MainController',
 
         init();
 
+        $scope.logout = function () {
+            authenticationService.logout();
+            $scope.userIsLogged = false;
+            $scope.clickedMyAds = false;
+            $location.path('/home');
+
+           // TODO: add alert message
+        };
+
         /* This event is sent by all other controllers for  error messages */
         $scope.$on('errorHandle', function (event, message) {
             $scope.alertDialog = true;

@@ -60,6 +60,7 @@ adsApp.factory('authenticationService',
             return deferred.promise;
         }
 
+
         return {
             register: register,
             login: login,

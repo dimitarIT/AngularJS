@@ -1,5 +1,5 @@
 <!-- Navigation box for anonymous site visitors -->
-<div ng-if="!userIsLogged" class="navbar navbar-default" >
+<div class="navbar navbar-default" >
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target=".navbar-responsive-collapse">
@@ -9,8 +9,12 @@
 
 	<div class="navbar-collapse collapse navbar-responsive-collapse">
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="#/login/">Login</a></li>
-			<li><a href="#/register/">Register</a></li>
+			<li ng-if="!userIsLogged" class="active"><a href="#/login/">Login</a></li>
+			<li ng-if="!userIsLogged"><a href="#/register/">Register</a></li>
+			<li ng-if="userIsLogged"><a href="#/register/">My Ads</a></li>
+			<li ng-if="userIsLogged"><a href="#/register/">Publish New Ad</a></li>
+			<li ng-if="userIsLogged"><a href="#/register/">Edit Profile</a></li>
+			<li class="pull-right" ng-if="userIsLogged" ng-click="logout()"><a>Logout</a></li>
 		</ul>
 	</div>
 </div>

@@ -2,7 +2,7 @@
 
 adsApp.factory('authorizationService',
     function authorization($window) {
-        var headers;
+        var headers = {};
         var userSession;
         var userData;
         var accessToken;
@@ -71,13 +71,3 @@ adsApp.factory('authorizationService',
             deleteAuthorizationHeaders: deleteAuthorizationHeaders
         }
     });
-
-
-
-
-
-
-
-
-
-

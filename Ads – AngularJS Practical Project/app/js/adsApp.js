@@ -27,5 +27,4 @@ adsApp.config(['$routeProvider',
                 redirectTo: '/home'
             });
     }
-])
-    .constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
+]).constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/')
