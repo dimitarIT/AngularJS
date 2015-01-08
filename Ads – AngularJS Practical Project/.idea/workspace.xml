@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93323667-cc8b-4acd-bdb7-048eb80c2312" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/RegisterController.js" afterPath="$PROJECT_DIR$/app/js/controllers/RegisterController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/login.html" afterPath="$PROJECT_DIR$/app/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/register.html" afterPath="$PROJECT_DIR$/app/templates/register.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="fe9d810e-693e-4843-bf12-e3897620dfe3" name="Failed commit: Default" comment="reformatting code and started with home-view" />
@@ -567,7 +564,13 @@
       <option name="project" value="LOCAL" />
       <updated>1420655418435</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="- register functionality almost done">
+      <created>1420657598848</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1420657598848</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -670,7 +673,8 @@
     <MESSAGE value="- authorization Service added&#10;- authentication Service added&#10;- login CTRL added&#10;- register CTRL added" />
     <MESSAGE value="- partials added" />
     <MESSAGE value="- logout added" />
-    <option name="LAST_COMMIT_MESSAGE" value="- logout added" />
+    <MESSAGE value="- register functionality almost done" />
+    <option name="LAST_COMMIT_MESSAGE" value="- register functionality almost done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
