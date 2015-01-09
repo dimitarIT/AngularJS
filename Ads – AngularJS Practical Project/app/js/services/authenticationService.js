@@ -8,7 +8,7 @@ adsApp.factory('authenticationService',
 
             $http({
                 method: 'POST',
-                url: baseUrl + '/user/register',
+                url: baseUrl + 'user/register',
                 data: credentials
             })
                 .success(function (data, status, headers, config) {
@@ -26,7 +26,7 @@ adsApp.factory('authenticationService',
 
             $http({
                 method: 'POST',
-                url: baseUrl + '/user/login',
+                url: baseUrl + 'user/login',
                 data: credentials
             })
                 .success(function (data, status, headers, config) {
@@ -44,7 +44,7 @@ adsApp.factory('authenticationService',
             var headers = authorizationService.getAuthorizationHeaders();
             $http({
                 method: 'POST',
-                url: baseUrl + '/user/logout',
+                url: baseUrl + 'user/logout',
                 data: {},
                 headers: headers
             })
