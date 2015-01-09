@@ -4,44 +4,41 @@ adsApp.factory('authorizationService',
     function authorization($window) {
         var headers = {};
         var userSession;
-        var userData;
-        var accessToken;
-        var userObject;
 
         function setUserSession(data) {
             userSession = {
                 accessToken: data.access_token,
-                username: data.username
+                userName: data.username
             };
 
             $window.sessionStorage["currentUser"] = JSON.stringify(userSession);
         }
 
         function getCurrentUser() {
-            userData = sessionStorage['currentUser'];
+            var userData = sessionStorage['currentUser'];
             if (userData) {
                 return JSON.parse(sessionStorage['currentUser']);
             }
         }
 
         function getUsername() {
-            userData = sessionStorage['currentUser'];
+            var userData = sessionStorage['currentUser'];
             if (userData) {
-                userObject = JSON.parse(sessionStorage['currentUser']);
+                var userObject = JSON.parse(sessionStorage['currentUser']);
                 return userObject.userName;
             }
         }
 
         function getAccessToken() {
-            userData = sessionStorage['currentUser'];
+            var userData = sessionStorage['currentUser'];
             if (userData) {
-                userObject = JSON.parse(sessionStorage['currentUser']);
+                var userObject = JSON.parse(sessionStorage['currentUser']);
                 return userObject.accessToken;
             }
         }
 
         function userIsLogged() {
-            userData = sessionStorage['currentUser'];
+            var userData = sessionStorage['currentUser'];
             if (userData) {
                 return true;
             } else {
@@ -50,11 +47,12 @@ adsApp.factory('authorizationService',
         }
 
         function getAuthorizationHeaders() {
-            accessToken = getAccessToken();
+            var accessToken = getAccessToken();
             if (accessToken) {
                 angular.extend(headers, {Authorization: 'Bearer ' + accessToken});
+                return headers;
             }
-            return headers;
+            return null
         }
 
         function deleteAuthorizationHeaders() {
