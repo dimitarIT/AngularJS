@@ -58,4 +58,35 @@ adsApp.controller('MainController',
                 });
             }, 5000);
         });
+
+        $scope.loadUserAds = function(adsWithStatus) {
+            if (authorizationService.userIsLogged()) {
+                $scope.userIsLogged = true;
+                $scope.clickedMyAds = true;
+
+                if (adsWithStatus === '') {
+                    $location.path('/user/ads');
+                } else {
+                    $location.path('/user/ads/' + adsWithStatus.toLowerCase());
+                }
+            }
+        };
+
+        /* redirect user to publish-new-add page */
+        $scope.publishNewAdd = function() {
+            if (authorizationService.userIsLogged()) {
+                $scope.userIsLogged = true;
+                $scope.clickedMyAds = false;
+                $location.path('/user/publish-new-add');
+            }
+        };
+
+        /* redirect user to edit-profile page */
+        $scope.editProfile = function() {
+            if (authorizationService.userIsLogged()) {
+                $scope.userIsLogged = true;
+                $scope.clickedMyAds = false;
+                $location.path('/user/profile');
+            }
+        };
     });

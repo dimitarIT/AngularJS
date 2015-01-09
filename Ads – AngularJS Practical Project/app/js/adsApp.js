@@ -23,6 +23,34 @@ adsApp.config(['$routeProvider',
                 templateUrl: 'templates/register.html',
                 controller: 'RegisterController'
             }).
+            when('/user/ads', {
+                templateUrl: 'templates/user-home-ads.html',
+                controller: 'UserAdsController'
+            }).
+            when('/user/ads/published', {
+                templateUrl: 'templates/user-home-ads.html',
+                controller: 'UserAdsController'
+            }).
+            when('/user/ads/waitingapproval', {
+                templateUrl: 'templates/user-home-ads.html',
+                controller: 'UserAdsController'
+            }).
+            when('/user/ads/inactive', {
+                templateUrl: 'templates/user-home-ads.html',
+                controller: 'UserAdsController'
+            }).
+            when('/user/ads/rejected', {
+                templateUrl: 'templates/user-home-ads.html',
+                controller: 'UserAdsController'
+            }).
+            when('/user/publish-new-add', {
+                templateUrl: 'templates/user-publish-new-add.html',
+                controller: 'UserPublishAdController'
+            }).
+            when('/user/profile', {
+                templateUrl: 'templates/user-profile.html',
+                controller: 'UserProfileController'
+            }).
             otherwise({
                 redirectTo: '/home'
             });
