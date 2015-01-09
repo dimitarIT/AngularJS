@@ -35,7 +35,7 @@ adsAppControllers.controller('HomeController',
                 .then(function (data) {
                     $scope.loading = true;
                     $scope.adsData = data;
-                    $scope.totalAds = parseInt(data.numPages) * 3;
+                    $scope.totalAds = parseInt(data.numItems);
                     currentPage = pageNumber;
                 }, function (error) {
                     $rootScope.$broadcast('errorHandle');
