@@ -1,0 +1,82 @@
+<div>
+	<div class="jumbotron col-lg-10 col-centered">
+		<div class="row col centered" ng-if="noAdsToDisplay">
+			<h2 class="text-info text-center">No ads!</h2>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8">
+				<ul class="all-ads-list">
+					<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage"
+						total-items="totalAds" class="well">
+						<div class="row">
+							<div class="col-lg-8 ">
+								<h3 class="ad-title">{{ad.title}}</h3>
+							</div>
+							<div class="col-lg-4 pull-right">
+								<span class="text-info pull-right"> {{ad.date | date:"EEE dd-MMM-yyyy"}} </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-4 ad-image-container">
+								<img src="../img/no_image_available.svg" ng-src="{{ad.imageDataUrl}}" alt=""
+									 class="ad-image img-responsive">
+							</div>
+							<div class="col-lg-8">
+								<p class="well well-sm ad-info-paragraph"> {{ad.text}} </p>
+
+								<div class="row">
+									<div class="col-lg-2 ad-info-text"><strong>Name: </strong></div>
+									<div class="col-lg-9  well well-sm">{{ad.ownerName}}</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-2 ad-info-text"><strong>Email: </strong></div>
+									<div class="col-lg-9 well well-sm">
+										<a href="mailto:{{ad.ownerEmail}}">{{ad.ownerEmail}}</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-2 ad-info-text"><strong>Tel: </strong></div>
+									<div class="col-lg-9  well well-sm">{{ad.ownerPhone}}</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-lg-4">
+				<div class="col-lg-6">
+					<div class="btn-group-vertical">
+						<a class="btn btn-default"><h3>Categories</h3></a>
+						<a ng-click="filterByCategory('', 'Category')" class="btn btn-default">All</a>
+						<a ng-click="filterByCategory(category.id, category.name)"
+						   ng-repeat="category in categoriesData"
+						   class="btn btn-default">
+							{{category.name}}</a>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="btn-group-vertical">
+						<a class="btn btn-default"><h3>Towns</h3></a>
+						<a ng-click="filterByTown('', 'Town')" class="btn btn-default">All</a>
+						<a ng-click="filterByTown(town.id, town.name)"
+						   ng-repeat="town in townsData"
+						   class="btn btn-default">
+							{{town.name}}</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="row pagination-div">
+				<div class='col-lg-6 col-centered'>
+					<dir-pagination-controls
+							boundary-links="true" on-page-change="pageChanged(newPageNumber)"
+							template-url="templates/dirPagination.tpl.html">
+					</dir-pagination-controls>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
