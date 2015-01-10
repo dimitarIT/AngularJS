@@ -14,25 +14,29 @@
 								<h3 class="ad-title">{{ad.title}}</h3>
 							</div>
 							<div class="col-lg-4 pull-right">
-								<span class="text-info pull-right"> {{ad.date | date:"EEE dd-MMM-yyyy"}} </span>
+								<span class="text-info pull-right">
+									{{ad.date | date:"EEE dd-MMM-yyyy"}}
+								</span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-lg-4 ad-image-container">
-								<img src="../img/no_image_available.svg" ng-src="{{ad.imageDataUrl}}" alt=""
-									 class="ad-image img-responsive">
+								<img src="../img/no_image_available.svg" ng-src="{{ad.imageDataUrl}}"
+									 alt="" class="ad-image img-responsive">
 							</div>
 							<div class="col-lg-8">
 								<p class="well well-sm ad-info-paragraph"> {{ad.text}} </p>
 
 								<div class="row">
 									<div class="col-lg-2 ad-info-text"><strong>Category: </strong></div>
-									<div class="col-lg-9  well well-sm">{{ad.categoryName ? ad.categoryName : 'Not available'}}
+									<div class="col-lg-9  well well-sm">
+										{{ad.categoryName ? ad.categoryName : 'Not available'}}
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-2 ad-info-text"><strong>Towns </strong></div>
-									<div class="col-lg-9  well well-sm">{{ad.townName ? ad.townName : 'Not available'}}
+									<div class="col-lg-9  well well-sm">
+										{{ad.townName ? ad.townName : 'Not available'}}
 									</div>
 								</div>
 								<div class="row">
@@ -42,20 +46,24 @@
 									<span ng-if="ad.status === 'WaitingApproval' ||
 										  ad.status === 'Published'">
 										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
-										   ng-click="openModal(ad.id, 'Deactivate')">Deactivate</a>
+										   ng-click="openModal(ad.id, 'Deactivate')">Deactivate
+										</a>
 									</span>
 									<span ng-if="ad.status === 'Inactive' || ad.status === 'Rejected' ">
 										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
-										   ng-click="openEditModal(ad.id)">Edit</a>
+										   ng-click="openEditModal(ad.id)">Edit
+										</a>
 									</span>
 									<span ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'">
 										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
 										   ng-click="openModal(ad.id, 'Publish again')">Publish
-											<span class="avoidwrap">again</span></a>
+											<span class="avoidwrap">again</span>
+										</a>
 									</span>
 									<span ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'">
 										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
-										   ng-click="openModal(ad.id, 'Delete')">Delete</a>
+										   ng-click="openModal(ad.id, 'Delete')">Delete
+										</a>
 									</span>
 								</div>
 							</div>
