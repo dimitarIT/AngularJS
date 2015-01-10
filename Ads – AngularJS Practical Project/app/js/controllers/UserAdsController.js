@@ -4,7 +4,7 @@
 var adsAppControllers = adsAppControllers || angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('UserAdsController',
-    function UserAdsController( $scope, $rootScope, $location, $timeout, adsData) {
+    function UserAdsController($scope, $rootScope, $location, $timeout, $modal, adsData) {
         $scope.loading = true;
         $scope.noAdsToDisplay = false;
 

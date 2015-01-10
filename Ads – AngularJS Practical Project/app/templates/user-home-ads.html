@@ -5,7 +5,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-lg-6">
 				<ul class="all-ads-list">
 					<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage"
 						total-items="totalAds" class="well" id="{{ad.id}}">
@@ -44,10 +44,50 @@
 					</li>
 				</ul>
 			</div>
+
+
+
+
+			<div class="col-md-2 ">
+				<div class="row right-side-ad">
+					<div class="col-md-12 col-sm-12	 col-xs-12">
+						<div class="text-center col-centered">
+							<strong>Status:</strong>
+						</div>
+						<div class="well well-sm text-center col-centered ad-edit-buttons">{{ad.status}}</div>
+						<div class="ad-edit-buttons"
+							 ng-if="ad.status === 'WaitingApproval' ||
+									ad.status === 'Published'">
+							<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
+							   ng-click="openModal(ad.id, 'Deactivate')">Deactivate</a>
+						</div>
+						<div class="ad-edit-buttons" ng-if="ad.status === 'Inactive' ||
+								 ad.status === 'Rejected' ">
+							<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
+							   ng-click="openEditModal(ad.id)">Edit</a>
+						</div>
+						<div class="ad-edit-buttons" ng-if="ad.status === 'Inactive' ||
+								ad.status === 'Rejected'">
+							<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
+							   ng-click="openModal(ad.id, 'Publish again')">Publish <span class="avoidwrap">again</span></a>
+						</div>
+						<div class="ad-edit-buttons" ng-if="ad.status === 'Inactive' ||
+									ad.status === 'Rejected'">
+							<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
+							   ng-click="openModal(ad.id, 'Delete')">Delete</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
 			<div class="col-lg-4">
 				<div class="col-lg-6">
-					<div class="btn-group-vertical">
-						<a class="btn btn-default"><h3>Categories</h3></a>
+					<div class="btn-group-vertical" ng-if="category">
+						<a class="btn btn-default"><h3>{{category}}</h3></a>
 						<a ng-click="filterByCategory('', 'Category')" class="btn btn-default">All</a>
 						<a ng-click="filterByCategory(category.id, category.name)"
 						   ng-repeat="category in categoriesData"
@@ -56,8 +96,8 @@
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<div class="btn-group-vertical">
-						<a class="btn btn-default"><h3>Towns</h3></a>
+					<div class="btn-group-vertical" ng-if="towns">
+						<a class="btn btn-default" ><h3>{{town}}</h3></a>
 						<a ng-click="filterByTown('', 'Town')" class="btn btn-default">All</a>
 						<a ng-click="filterByTown(town.id, town.name)"
 						   ng-repeat="town in townsData"

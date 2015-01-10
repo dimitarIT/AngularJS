@@ -19,3 +19,10 @@
 .btn-group-vertical {
 	width: 110%;
 }
+
+input, h1, h2, h3, h4, h5, p, span, .btn-default{
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	width:100%
+}

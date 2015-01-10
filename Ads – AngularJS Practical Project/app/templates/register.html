@@ -83,13 +83,13 @@
 
 			<div class="form-group">
 				<div class="col-lg-10 col-lg-offset-2">
-					<button name="login" ng-click="register(credentials, registerForm)" type="submit"
+					<button name="register" ng-click="register(credentials, registerForm)" type="submit"
 							class="btn btn-primary"
-							ng-disabled="loginForm.$invalid" ng-click="login()">
+							ng-disabled="registerForm.$invalid" ng-click="register()">
 						Register
 					</button>
-					<a class="btn btn-default" href="#/login">Login</a>
-					<a class="btn btn-default" href="#/home">Cancel</a>
+					<a class="btn btn-link" href="#/login">Login</a>
+					<a class="btn btn-link" href="#/home">Cancel</a>
 				</div>
 			</div>
 		</fieldset>
