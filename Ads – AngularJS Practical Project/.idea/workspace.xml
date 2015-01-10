@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93323667-cc8b-4acd-bdb7-048eb80c2312" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/ui-bootstrap-custom-0.12.0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/ui-bootstrap-custom-tpls-0.12.0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/ui-bootstrap-tpls-0.12.0.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/UserAdsController.js" afterPath="$PROJECT_DIR$/app/js/controllers/UserAdsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/adsApp.css" afterPath="$PROJECT_DIR$/app/css/adsApp.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/adsApp.js" afterPath="$PROJECT_DIR$/app/js/adsApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/home.html" afterPath="$PROJECT_DIR$/app/templates/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/login.html" afterPath="$PROJECT_DIR$/app/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/register.html" afterPath="$PROJECT_DIR$/app/templates/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user-home-ads.html" afterPath="$PROJECT_DIR$/app/templates/user-home-ads.html" />
+      <change type="DELETED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\angular\ui-bootstrap-custom-0.12.0.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\angular\ui-bootstrap-custom-tpls-0.12.0.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\angular\ui-bootstrap-tpls-0.12.0.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\angular-resource.js" afterPath="$PROJECT_DIR$/app/lib/angular/angular-resource.js" />
-      <change type="MOVED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\angular-route.js" afterPath="$PROJECT_DIR$/app/lib/angular/angular-route.js" />
-      <change type="MOVED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\angular-sanitize.js" afterPath="$PROJECT_DIR$/app/lib/angular/angular-sanitize.js" />
-      <change type="MOVED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\angular.js" afterPath="$PROJECT_DIR$/app/lib/angular/angular.js" />
-      <change type="MOVED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\dirPagination.js" afterPath="$PROJECT_DIR$/app/lib/dirPagination/dirPagination.js" />
     </list>
     <list id="fe9d810e-693e-4843-bf12-e3897620dfe3" name="Failed commit: Default" comment="reformatting code and started with home-view" />
     <ignored path="Ads – AngularJS Practical Project.iws" />
@@ -66,7 +53,7 @@
       <file leaf-file-name="UserAdsController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/controllers/UserAdsController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27303755" vertical-offset="40" max-vertical-offset="980">
+            <state vertical-scroll-proportion="0.2735043" vertical-offset="40" max-vertical-offset="980">
               <caret line="10" column="76" selection-start-line="10" selection-start-column="76" selection-end-line="10" selection-end-column="76" />
               <folding />
             </state>
@@ -658,7 +645,13 @@
       <option name="project" value="LOCAL" />
       <updated>1420883207315</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="- added noty, ui">
+      <created>1420889937998</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1420889937998</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -683,14 +676,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51549757" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32789558" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32789558" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22395833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22395833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41272432" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -700,7 +694,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5742251" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -721,7 +714,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="bootstrap theme added" />
     <MESSAGE value="- Navbar added&#10;- Main controller added&#10;- Login added&#10;- register added" />
     <MESSAGE value="- Home Page&#10;- Main controller added&#10;- Added 'login' and 'register' in 'routeProvider'" />
     <MESSAGE value="- Service for 'towns' added" />
@@ -746,7 +738,8 @@
     <MESSAGE value="- added footer in partials" />
     <MESSAGE value="- added services for ads" />
     <MESSAGE value="- bugs, bugs, bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="- bugs, bugs, bugs" />
+    <MESSAGE value="- added noty, ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added noty, ui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1109,14 +1102,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/angular/ui-bootstrap-custom-0.12.0.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64846414" vertical-offset="0" max-vertical-offset="78820">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.61785716" vertical-offset="1454" max-vertical-offset="2040">
@@ -1143,7 +1128,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers/UserAdsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27303755" vertical-offset="40" max-vertical-offset="980">
+        <state vertical-scroll-proportion="0.2735043" vertical-offset="40" max-vertical-offset="980">
           <caret line="10" column="76" selection-start-line="10" selection-start-column="76" selection-end-line="10" selection-end-column="76" />
           <folding />
         </state>
