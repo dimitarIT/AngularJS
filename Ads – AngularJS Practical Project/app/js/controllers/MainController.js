@@ -62,15 +62,15 @@ adsApp.controller('MainController',
         $scope.loadUserAds = function(adsWithStatus) {
             if (authorizationService.userIsLogged()) {
                 $scope.userIsLogged = true;
-                $scope.clickedMyAds = true;
-
-                if (adsWithStatus === '') {
+               if (adsWithStatus === '') {
                     $location.path('/user/ads');
                 } else {
                     $location.path('/user/ads/' + adsWithStatus.toLowerCase());
                 }
             }
-        };
+        };        $scope.clickedMyAds = true;
+
+
 
         /* redirect user to publish-new-add page */
         $scope.publishNewAdd = function() {
@@ -87,6 +87,14 @@ adsApp.controller('MainController',
                 $scope.userIsLogged = true;
                 $scope.clickedMyAds = false;
                 $location.path('/user/profile');
+            }
+        };
+
+        $scope.getClass = function(path) {
+            if ($location.path() === path) {
+                return "active";
+            } else {
+                return "";
             }
         };
     });

@@ -1,8 +1,10 @@
+'use strict';
+// TODO: ADD Errors
+
 var adsAppControllers = adsAppControllers || angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('UserAdsController',
-    function userAllAdsController($scope, $rootScope, $location,
-                                  $modal, $timeout, adsData) {
+    function UserAdsController( $scope, $rootScope, $location, $timeout, adsData) {
         $scope.loading = true;
         $scope.noAdsToDisplay = false;
 

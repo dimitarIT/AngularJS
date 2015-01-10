@@ -6,7 +6,7 @@ adsApp.factory('categoriesData', function categoriesData($http, $q, baseUrl) {
 
         $http({
             method: 'GET',
-            url: baseUrl + 'categories'
+            url: baseUrl + '/categories'
         })
             .success(function (data, status, headers, config) {
                 deferred.resolve(data, status, headers, config);
