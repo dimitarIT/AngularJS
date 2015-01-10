@@ -1,0 +1,148 @@
+<div class=" col-centerd">
+	<div class="col-md-5 coll-sm-5 coll-xs-10 well well-sm">
+		<form name="editProfileForm" class="form-horizontal col-md-12 coll-sm-12 coll-xs-12">
+			<fieldset>
+				<legend class="text-center">Edit Profile</legend>
+				<!-- name-->
+				<div class="row form-group">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div>
+							<label for="name"
+								   class="col-md-3 col-sm-3 col-xs-3 control-label label-on-top edit-profile-label">Name:
+								<b class="text-danger">*</b></label>
+						</div>
+						<input type="text" name="name" class="form-control" id="name" placeholder="Name"
+							   ng-model="editProfileForm.name" required>
+					</div>
+				</div>
+				<!-- email -->
+				<div class="row form-group">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div>
+							<label for="email"
+								   class="col-md-3 col-sm-3 col-xs-3 control-label label-on-top edit-profile-label">Email:
+								<b class="text-danger">*</b>
+							</label>
+						</div>
+						<input type="email" name="email" class="form-control" id="email" placeholder="Email"
+							   ng-model="editProfileForm.email" required>
+					</div>
+				</div>
+				<!-- phone -->
+				<div class="row form-group">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div>
+							<label for="phoneNumber"
+								   class="col-md-3 col-sm-3 col-xs-3 control-label label-on-top edit-profile-label">Pohone:
+								<b class="text-danger">*</b></label>
+						</div>
+						<input type="text" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone"
+							   ng-model="editProfileForm.phoneNumber" required>
+					</div>
+				</div>
+				<!-- Town -->
+				<div class="row form-group">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div>
+							<label for="town"
+								   class="col-md-3 col-sm-3 col-xs-3 control-label label-on-top edit-profile-label">Town: </label>
+						</div>
+						<select class="form-control" id="town" ng-model="editProfileForm.townId">
+							<option value="{{nullValue}}">None</option>
+							<option ng-repeat="town in townsData" value="{{town.id}}">{{town.name}}</option>
+						</select>
+					</div>
+				</div>
+				<!-- note on required fields-->
+				<div class="row form-group">
+					<div class="col-md-12">
+						<p class="text-danger text-center"><b class="text-danger">Note:</b> The fields with * are
+																							required.You can not edit
+																							your profile and submit
+																							changes leaving the fields
+																							blank.</p>
+					</div>
+				</div>
+				<!-- register submit-->
+				<div class="form-group row">
+					<div class="centerd-buttons">
+						<a class="btn btn-default" href="#/home">Cancel</a>
+						<button name="update" ng-click="updateProfile(editProfileForm)" type="submit"
+								class="btn btn-primary">Update
+						</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="col-md-1 coll-sm-1 coll-xs-1">
+
+	</div>
+	<div class="col-md-5 coll-sm-5 coll-xs-10 well well-sm">
+		<form name="changePasswordForm" class="form-horizontal col-md-12 coll-sm-12 coll-xs-12">
+			<fieldset>
+				<legend class="text-center">Change Password</legend>
+				<!-- old password-->
+				<div class="row form-group">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div>
+							<label for="oldPassword"
+								   class="col-md-8 col-sm-8 col-xs-8 control-label label-on-top edit-profile-label">Old
+																													password:
+								<b class="text-danger">*</b></label>
+						</div>
+						<input type="password" name="oldPassword" class="form-control" id="name"
+							   placeholder="Old password" ng-model="credentials.oldPassword" required>
+					</div>
+				</div>
+				<!-- new pasword -->
+				<div class="row form-group">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div>
+							<label for="newPassword"
+								   class="col-md-8 col-sm-8 col-xs-8 control-label label-on-top edit-profile-label">New
+																													password:
+								<b class="text-danger">*</b>
+							</label>
+						</div>
+						<input type="password" name="newPassword" class="form-control" id="newPassword"
+							   placeholder="New password" ng-model="credentials.newPassword" required>
+					</div>
+				</div>
+				<!-- confirm password -->
+				<div class="row form-group">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div>
+							<label for="confirmPassword"
+								   class="col-md-8 col-sm-8 col-xs-8 control-label label-on-top edit-profile-label">Confirm
+																													new
+																													password:
+								<b class="text-danger">*</b></label>
+						</div>
+						<input type="password" name="confirmPassword" class="form-control" id="confirmPassword"
+							   placeholder="Confirm new password" ng-model="credentials.confirmPassword" required>
+					</div>
+				</div>
+				<!-- note on required fields-->
+				<div class="row form-group">
+					<div class="col-md-12">
+						<p class="text-danger text-center"><b class="text-danger">Note:</b> The fields with * are
+																							required.Please be carefull
+																							when changing your password
+																							and make sure you don't
+																							forget it.</p>
+					</div>
+				</div>
+				<!-- register submit-->
+				<div class="form-group row">
+					<div class="centerd-buttons">
+						<a class="btn btn-default" href="#/home">Cancel</a>
+						<button name="update" ng-click="changePassword(credentials, changePasswordForm)" type="submit"
+								class="btn btn-primary">Change
+						</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>

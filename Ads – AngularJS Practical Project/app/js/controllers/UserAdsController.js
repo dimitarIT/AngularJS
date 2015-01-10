@@ -40,4 +40,39 @@ adsAppControllers.controller('UserAdsController',
                     $scope.loading = false;
                 });
         }
+
+        /* open a modal dialog to ask user for confirmation of action
+         -requests are executed in the modal controler */
+        $scope.openModal = function (id, action) {
+            var modalInstance = $modal.open({
+                templateUrl: './templates/modalTemplate.html',
+                controller: 'ModalController',
+                backdrop: false,
+                keyboard: false,
+                resolve: {
+                    id: function () {
+                        return id;
+                    },
+                    action: function () {
+                        return action;
+                    }
+                }
+            });
+        };
+
+        /* open a modal dialog for user to edit ad;
+         -request is executed in the EditAdModal controler */
+        $scope.openEditModal = function (id) {
+            var modalInstance = $modal.open({
+                templateUrl: './templates/editAdModalTemplate.html',
+                controller: 'EditAdModalController',
+                backdrop: false,
+                keyboard: false,
+                resolve: {
+                    id: function () {
+                        return id;
+                    }
+                }
+            });
+        };
     });

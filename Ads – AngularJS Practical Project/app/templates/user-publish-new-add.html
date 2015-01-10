@@ -1,0 +1,104 @@
+<!-- new ad form-->
+<form name="newAdForm" class="form-horizontal col-md-10 coll-sm-10 coll-xs-10 well
+	well-sm publis-new-add-form">
+	<fieldset>
+		<legend class="text-center">Publish New Ad</legend>
+		<!-- title, text and image  -->
+		<div class="row">
+			<div class="col-md-8 col-sm-8 col-xs-8">
+				<div class="form-group">
+					<div class="pull-right text-danger col-md-3 col-sm-3 col-xs-3"
+						 ng-show="newAdForm.title.$error.required && newAdForm.title.$dirty">Required!
+					</div>
+					<label for="title" class="col-md-3 col-sm-4 col-xs-4 control-label">
+						Title: <b class="text-danger">*</b> </label>
+
+					<div class="col-md-9 col-sm-8 col-xs-8">
+						<input type="text" name="title" class="form-control" id="title" placeholder="Title"
+							   ng-model="newAdData.title" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="pull-right text-danger col-md-3 col-sm-3 col-xs-3"
+						 ng-show="newAdForm.text.$error.required && newAdForm.text.$dirty">Required!
+					</div>
+					<label for="text" class="col-md-3 col-sm-4 col-xs-4 control-label">
+						Text: <b class="text-danger">*</b>
+					</label>
+
+					<div class="col-md-9 col-sm-8 col-xs-8">
+						<textarea class="form-control" rows="5" id="text" name="text" ng-model="newAdData.text"
+								  placeholder="Ad description..." required></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+				<img src="./img/no.image-uploaded-mini.jpg" alt=""
+					 class="ad-image img-responsive">
+			</div>
+		</div>
+		<!-- browse image, town and category-->
+		<div class="row">
+			<div class="col-md-8 col-sm-8 col-xs-8">
+				<div class="form-group">
+					<label for="image" class="col-md-3 col-sm-4 col-xs-4 control-label">Image:
+					</label>
+
+					<div class="col-md-9 col-sm-8 col-xs-8">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<span class="btn btn-primary btn-file">Browse…
+								<input type="file" multiple="" id="image"
+									   onchange="angular.element(this).scope().fileSelected(this)"/>
+								</span>
+							</span>
+							<input type="text" class="form-control image-title" readonly=""
+								   value=""/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="selectTown" class="col-md-3 col-sm-4 col-xs-4 control-label">Town:</label>
+
+					<div class="col-md-9 col-sm-8 col-xs-8">
+						<select class="form-control" id="selectTown" ng-model="newAdData.townId">
+							<option value="{{nullValue}}" selected>None</option>
+							<option ng-repeat="town in townsData" value="{{town.id}}">{{town.name}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="selectCategory" class="col-md-3 col-sm-4 col-xs-4 control-label">Category:</label>
+
+					<div class="col-md-9 col-sm-8 col-xs-8">
+						<select class="form-control" id="selectCategory" ng-model="newAdData.categoryId">
+							<option value="{{nullValue}}" selected>None</option>
+							<option ng-repeat="category in categoriesData" value="{{category.id}}">{{category.name}}
+							</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- note on required fields-->
+		<div class="form-group">
+			<div class="col-md-12">
+				<p class="text-danger text-center"><b class="text-danger">Note:</b> The fields with * are required.You
+																					can not submit a new ad until
+																					filling out all required details
+																					information.Please note that
+																					supported upload files are only
+																					images.</p>
+			</div>
+		</div>
+		<!-- register submit-->
+		<div class="form-group row">
+			<div class="centerd-buttons">
+				<a class="btn btn-default" href="#/user/ads">Cancel</a>
+				<button name="login" ng-click="publishAd(newAdData,newAdForm)" type="submit" class="btn btn-primary"
+						ng-disabled="newAdForm.$invalid">Submit
+				</button>
+			</div>
+		</div>
+	</fieldset>
+</form>

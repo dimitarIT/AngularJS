@@ -5,10 +5,10 @@
 		</div>
 
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-8">
 				<ul class="all-ads-list">
-					<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage"
-						total-items="totalAds" class="well" id="{{ad.id}}">
+					<li dir-paginate="ad in userAdsData.ads | filter: query | itemsPerPage: adsPerPage"
+						total-items="totalAds" class="well">
 						<div class="row">
 							<div class="col-lg-8 ">
 								<h3 class="ad-title">{{ad.title}}</h3>
@@ -26,85 +26,46 @@
 								<p class="well well-sm ad-info-paragraph"> {{ad.text}} </p>
 
 								<div class="row">
-									<div class="col-lg-2 ad-info-text"><strong>Name: </strong></div>
-									<div class="col-lg-9  well well-sm">{{ad.ownerName}}</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-2 ad-info-text"><strong>Email: </strong></div>
-									<div class="col-lg-9 well well-sm">
-										<a href="mailto:{{ad.ownerEmail}}">{{ad.ownerEmail}}</a>
+									<div class="col-lg-2 ad-info-text"><strong>Category: </strong></div>
+									<div class="col-lg-9  well well-sm">{{ad.categoryName ? ad.categoryName : 'Not available'}}
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-lg-2 ad-info-text"><strong>Tel: </strong></div>
-									<div class="col-lg-9  well well-sm">{{ad.ownerPhone}}</div>
+									<div class="col-lg-2 ad-info-text"><strong>Towns </strong></div>
+									<div class="col-lg-9  well well-sm">{{ad.townName ? ad.townName : 'Not available'}}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-2 ad-info-text"><strong>Status:</strong></div>
+									<div class="col-lg-9  well well-sm">{{ad.status}}</div>
+
+									<div class="ad-edit-buttons"
+										 ng-if="ad.status === 'WaitingApproval' ||
+										  ad.status === 'Published'">
+										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
+										   ng-click="openModal(ad.id, 'Deactivate')">Deactivate</a>
+									</div>
+									<div class="ad-edit-buttons"
+										 ng-if="ad.status === 'Inactive' || ad.status === 'Rejected' ">
+										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
+										   ng-click="openEditModal(ad.id)">Edit</a>
+									</div>
+									<div class="ad-edit-buttons"
+										 ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'">
+										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
+										   ng-click="openModal(ad.id, 'Publish again')">Publish
+											<span class="avoidwrap">again</span></a>
+									</div>
+									<div class="ad-edit-buttons"
+										 ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'">
+										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
+										   ng-click="openModal(ad.id, 'Delete')">Delete</a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</li>
 				</ul>
-			</div>
-
-
-
-
-			<div class="col-md-2 ">
-				<div class="row right-side-ad">
-					<div class="col-md-12 col-sm-12	 col-xs-12">
-						<div class="text-center col-centered">
-							<strong>Status:</strong>
-						</div>
-						<div class="well well-sm text-center col-centered ad-edit-buttons">{{ad.status}}</div>
-						<div class="ad-edit-buttons"
-							 ng-if="ad.status === 'WaitingApproval' ||
-									ad.status === 'Published'">
-							<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
-							   ng-click="openModal(ad.id, 'Deactivate')">Deactivate</a>
-						</div>
-						<div class="ad-edit-buttons" ng-if="ad.status === 'Inactive' ||
-								 ad.status === 'Rejected' ">
-							<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
-							   ng-click="openEditModal(ad.id)">Edit</a>
-						</div>
-						<div class="ad-edit-buttons" ng-if="ad.status === 'Inactive' ||
-								ad.status === 'Rejected'">
-							<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
-							   ng-click="openModal(ad.id, 'Publish again')">Publish <span class="avoidwrap">again</span></a>
-						</div>
-						<div class="ad-edit-buttons" ng-if="ad.status === 'Inactive' ||
-									ad.status === 'Rejected'">
-							<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
-							   ng-click="openModal(ad.id, 'Delete')">Delete</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-
-
-
-			<div class="col-lg-4">
-				<div class="col-lg-6">
-					<div class="btn-group-vertical" ng-if="category">
-						<a class="btn btn-default"><h3>{{category}}</h3></a>
-						<a ng-click="filterByCategory('', 'Category')" class="btn btn-default">All</a>
-						<a ng-click="filterByCategory(category.id, category.name)"
-						   ng-repeat="category in categoriesData"
-						   class="btn btn-default">
-							{{category.name}}</a>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="btn-group-vertical" ng-if="towns">
-						<a class="btn btn-default" ><h3>{{town}}</h3></a>
-						<a ng-click="filterByTown('', 'Town')" class="btn btn-default">All</a>
-						<a ng-click="filterByTown(town.id, town.name)"
-						   ng-repeat="town in townsData"
-						   class="btn btn-default">
-							{{town.name}}</a>
-					</div>
-				</div>
 			</div>
 
 		</div>
