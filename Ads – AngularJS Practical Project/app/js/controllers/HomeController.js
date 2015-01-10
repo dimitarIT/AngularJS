@@ -72,7 +72,7 @@ adsAppControllers.controller('HomeController',
                         $scope.noAdsToDisplay = true;
                     }
 
-                    $scope.totalAds = parseInt(data.numPages) * 3;
+                    $scope.totalAds = parseInt(data.numItems);
                     $scope.categoryFilter = categoryName;
                     currentCategoryId = categoryId;
                 }, function (error) {
@@ -92,7 +92,7 @@ adsAppControllers.controller('HomeController',
                     $scope.noAdsToDisplay = true;
                 }
 
-                $scope.totalAds = parseInt(data.numPages) * 3;
+                $scope.totalAds = parseInt(data.numItems);
                 $scope.townFilter = townName;
                 currentTownId = townId;
             }, function (error) {

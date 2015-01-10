@@ -1,13 +1,15 @@
 'use strict';
 
-adsApp.factory('adsData', function adsData($http, $q, baseUrl) { // TODO add authorization
-
-    function getAllAds(pageNumber, townId, categoryId) {
+adsApp.factory('adsData', function adsData($http, $q, baseUrl, authorizationService) {
+    function adsRequester(method, url, data) {
         var deferred = $q.defer();
 
+        var headers = authorizationService.getAuthorizationHeaders();
         $http({
-            method: 'GET',
-            url: baseUrl + '/ads?pagesize=3&startpage=' + pageNumber + '&TownId=' + townId + '&CategoryId=' + categoryId
+            method: method,
+            url: url,
+            data: data,
+            headers: headers
         })
             .success(function (data, status, headers, config) {
                 deferred.resolve(data, status, headers, config);
@@ -19,67 +21,60 @@ adsApp.factory('adsData', function adsData($http, $q, baseUrl) { // TODO add aut
         return deferred.promise;
     }
 
-    function getAllAdsByCategories(categoryId, townId, pageNumber) {
-        var deferred = $q.defer();
+    var getAllAds = function (pageNumber, townId, categoryId) {
+        return adsRequester('GET', baseUrl + '/ads?pagesize=5&startpage=' + pageNumber +
+        '&TownId=' + townId + '&CategoryId=' + categoryId, null);
+    };
 
-        $http({
-            method: 'GET',
-            url: baseUrl + '/ads?pagesize=3&CategoryId=' + categoryId + '&TownId=' + townId + '&startpage=' + pageNumber
-        })
-            .success(function (data, status, headers, config) {
-                deferred.resolve(data, status, headers, config);
-            })
-            .error(function (data, status, headers, config) {
-                deferred.reject(data, status, headers, config);
-            });
+    var getAllAdsByTown = function (townId, categoryId, pageNumber) {
+        return adsRequester('GET', baseUrl + '/ads?pagesize=5&TownId=' + townId +
+        '&CategoryId=' + categoryId + '&startpage=' + pageNumber, null);
+    };
 
-        return deferred.promise;
-    }
+    var getAllAdsByCategories = function (categoryId, townId, pageNumber) {
+        return adsRequester('GET', baseUrl + '/ads?pagesize=5&CategoryId=' + categoryId +
+        '&TownId=' + townId + '&startpage=' + pageNumber, null);
+    };
 
-    function getAllAdsByTown(townId, categoryId, pageNumber) {
-        var deferred = $q.defer();
+    var getUserAds = function (pageNumber, adsWithStatus) {
+        return adsRequester('GET', baseUrl + '/user/ads?pagesize=3&startpage=' +
+        pageNumber + '&status=' + adsWithStatus, null);
+    };
 
-        $http({
-            method: 'GET',
-            url: baseUrl + '/ads?pagesize=3&TownId=' + townId + '&CategoryId=' + categoryId + '&startpage=' + pageNumber
-        })
-            .success(function (data, status, headers, config) {
-                deferred.resolve(data, status, headers, config);
-            })
-            .error(function (data, status, headers, config) {
-                deferred.reject(data, status, headers, config);
-            });
+    var publishAd = function (newAdData) {
+        return adsRequester('POST', baseUrl + '/user/ads', newAdData);
+    };
 
-        return deferred.promise;
-    }
+    var deactivateAd = function (id) {
+        return adsRequester('PUT', baseUrl + '/user/ads/deactivate/' + id, null);
+    };
 
-    function getUserAds() {
-        // TODO
-    }
+    var publishAgainAd = function (id) {
+        return adsRequester('PUT', baseUrl + '/user/ads/publishagain/' + id, null);
+    };
 
-    function publishAd() {
-        // TODO
-    }
+    var deleteAd = function (id) {
+        return adsRequester('DELETE', baseUrl + '/user/ads/' + id, null);
+    };
 
-    function deactivateAd() {
-        // TODO
-    }
+    var getAdById = function (id) {
+        return adsRequester('GET', baseUrl + '/user/ads/' + id, null);
+    };
 
-    function deleteAd() {
-        // TODO
-    }
-
-    function getAdById() {
-        // TODO
-    }
-
-    function editAd() {
-        // TODO
-    }
+    var editAd = function (id, editAdData) {
+        return adsRequester('PUT', baseUrl + '/user/ads/' + id, editAdData);
+    };
 
     return {
         getAll: getAllAds,
         getByTown: getAllAdsByTown,
-        getByCategory: getAllAdsByCategories
+        getByCategory: getAllAdsByCategories,
+        getUserAds: getUserAds,
+        publishAd: publishAd,
+        deactivateAd: deactivateAd,
+        publishAgainAd: publishAgainAd,
+        deleteAd: deleteAd,
+        getAdById: getAdById,
+        editAd: editAd
     };
 });

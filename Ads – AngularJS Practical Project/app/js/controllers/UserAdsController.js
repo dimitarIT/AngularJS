@@ -1,19 +1,14 @@
-'use strict';
-
-// TODO: ADD Errors
 var adsAppControllers = adsAppControllers || angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('UserAdsController',
-    function homeController($scope, $rootScope, $location,
-                            $modal, $timeout, adsData) {
-
+    function userAllAdsController($scope, $rootScope, $location,
+                                  $modal, $timeout, adsData) {
         $scope.loading = true;
         $scope.noAdsToDisplay = false;
 
         var adStatus = $location.path().substr(10, $location.path().length);
 
         var currentPage = 1;
-
         $scope.totalAds = 0;
         $scope.adsPerPage = 3;
         getResultsPage(1);
@@ -27,18 +22,18 @@ adsAppControllers.controller('UserAdsController',
         };
 
         function getResultsPage(pageNumber) {
-            adsData.getAll(pageNumber, adStatus)
+            adsData.getUserAds(pageNumber, adStatus)
                 .then(function (data) {
                     if (data.ads.length === 0) {
-                        $scope.noAdsToDisplay = true; // TODO implement no ads to display
+                        $scope.noAdsToDisplay = true;
                     } else {
                         $scope.loading = true;
-                        $scope.adsData = data;
+                        $scope.userAdsData = data;
                         $scope.totalAds = parseInt(data.numItems);
                         currentPage = pageNumber;
                     }
                 }, function (error) {
-                    $rootScope.$broadcast('errorHandle');
+                    $rootScope.$broadcast('alertMessage');
                 }).finally(function () {
                     $scope.loading = false;
                 });

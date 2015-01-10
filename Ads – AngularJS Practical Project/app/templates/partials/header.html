@@ -16,9 +16,15 @@
 					<p class="text-danger">Welcome Home: {{currentUser}}</p>
 				</a>
 			</li>
-			<li ng-if="userIsLogged"><a href="#/register/">My Ads</a></li>
-			<li ng-if="userIsLogged"><a href="#/register/">Publish New Ad</a></li>
-			<li ng-if="userIsLogged"><a href="#/register/">Edit Profile</a></li>
+			<li ng-if="userIsLogged">
+				<a ng-class="getClass('/user/ads')" ng-click="loadUserAds('')">My Ads</a>
+			</li>
+			<li ng-if="userIsLogged">
+				<a ng-class="getClass('/user/publish-new-add')" ng-click="publishNewAdd()">Publish New Ad</a>
+			</li>
+			<li ng-if="userIsLogged">
+				<a ng-class="getClass('/user/profile')" ng-click="editProfile()">Edit Profile</a>
+			</li>
 			<li class="pull-right" ng-if="userIsLogged" ng-click="logout()"><a>Logout</a></li>
 		</ul>
 	</div>

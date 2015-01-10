@@ -8,7 +8,7 @@
 			<div class="col-lg-8">
 				<ul class="all-ads-list">
 					<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage"
-						total-items="totalAds" class="well">
+						total-items="totalAds" class="well" id="{{ad.id}}">
 						<div class="row">
 							<div class="col-lg-8 ">
 								<h3 class="ad-title">{{ad.title}}</h3>
