@@ -4,7 +4,7 @@ var adsAppControllers = adsAppControllers || angular.module('adsAppControllers',
 
 adsAppControllers.controller('LoginController',
     function loginController ($scope, $rootScope, $location,
-                              authenticationService, authorizationService ) {
+                              authenticationService, authorizationService,notifyService ) {
         $scope.login = function (credentials, loginForm) {
             if (loginForm.$valid) {
                 authenticationService.login(credentials)
@@ -14,8 +14,8 @@ adsAppControllers.controller('LoginController',
                     $location.path('/home');
                 }, function (error) {
                     $scope.errorOccurred = true;
-                    if (error.error_description) {
-                        $rootScope.$broadcast('errorHandle', error.error_description);
+                    if (error) {
+                        notifyService.showError("Login failed", error);
                     } else {
                         $rootScope.$broadcast('errorHandle');
                     }

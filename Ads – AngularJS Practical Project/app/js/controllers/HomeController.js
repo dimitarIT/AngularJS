@@ -1,16 +1,17 @@
 'use strict';
-// TODO: ADD Errors
+
 var adsAppControllers = adsAppControllers || angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('HomeController',
     function homeController($scope, $http, $rootScope,
-                            adsData, categoriesData, townsData) {
+                            adsData, categoriesData, townsData, notifyService) {
         $scope.loading = true;
         $scope.noAdsToDisplay = false;
 
         $scope.errorOccured = false;
         $scope.alertMsg = '';
 
+        // Buttons value
         $scope.townFilter = 'Town';
         $scope.categoryFilter = 'Category';
 
@@ -18,6 +19,7 @@ adsAppControllers.controller('HomeController',
             currentTownId = '',
             currentPage = 1;
 
+        // Pagination
         $scope.totalAds = 0;
         $scope.adsPerPage = 3;
         getResultsPage(1);
@@ -38,18 +40,17 @@ adsAppControllers.controller('HomeController',
                     $scope.totalAds = parseInt(data.numItems);
                     currentPage = pageNumber;
                 }, function (error) {
-                    $rootScope.$broadcast('errorHandle');
+                    notifyService.showError("Cannot load ads", error);
                 }).finally(function () {
                     $scope.loading = false;
                 });
         }
 
-
         categoriesData.getAll()
             .then(function (data) {
                 $scope.categoriesData = data;
             }, function (error) {
-                $rootScope.$broadcast('errorHandle');
+                notifyService.showError("Cannot load Categories", error);
             });
 
         townsData.getAll()
@@ -57,10 +58,10 @@ adsAppControllers.controller('HomeController',
                 $scope.townsData = data;
             }, function (error) {
                 $scope.errorOccurred = true;
-                $scope.alertMsg = '' ;
+                notifyService.showError("Cannot load Towns", error);
             });
 
-
+        // Filter by Category
         $scope.filterByCategory = function (categoryId, categoryName) {
             adsData.getByCategory(categoryId, currentTownId, currentPage)
                 .then(function (data) {
@@ -76,12 +77,13 @@ adsAppControllers.controller('HomeController',
                     $scope.categoryFilter = categoryName;
                     currentCategoryId = categoryId;
                 }, function (error) {
-                    $rootScope.$broadcast('errorHandle');
+                    notifyService.showError("Cannot filtered by category", error);
                 }).finally(function () {
                     $scope.loading = false;
                 });
         };
 
+        // Filter by Town
         $scope.filterByTown = function (townId, townName) {
             adsData.getByTown(townId, currentCategoryId, currentPage).then(function (data) {
                 $scope.noAdsToDisplay = false;
@@ -96,7 +98,7 @@ adsAppControllers.controller('HomeController',
                 $scope.townFilter = townName;
                 currentTownId = townId;
             }, function (error) {
-                $rootScope.$broadcast('errorHandle');
+                notifyService.showError("Cannot filtered by town", error);
             }).finally(function () {
                 $scope.loading = false;
             });
