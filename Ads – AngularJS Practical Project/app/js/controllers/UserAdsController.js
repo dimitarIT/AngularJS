@@ -1,15 +1,16 @@
 'use strict';
-// TODO: ADD Errors
 
 var adsAppControllers = adsAppControllers || angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('UserAdsController',
-    function UserAdsController($scope, $rootScope, $location, $timeout, $modal, adsData) {
+    function userAdsController($scope, $rootScope, $location,
+                               $timeout, $modal, adsData, notifyService) {
         $scope.loading = true;
         $scope.noAdsToDisplay = false;
 
         var adStatus = $location.path().substr(10, $location.path().length);
 
+        // Pagination
         var currentPage = 1;
         $scope.totalAds = 0;
         $scope.adsPerPage = 3;
@@ -35,14 +36,14 @@ adsAppControllers.controller('UserAdsController',
                         currentPage = pageNumber;
                     }
                 }, function (error) {
-                    $rootScope.$broadcast('alertMessage');
+                    notifyService.showError("Cannot load ads", error);
                 }).finally(function () {
                     $scope.loading = false;
                 });
         }
 
-        /* open a modal dialog to ask user for confirmation of action
-         -requests are executed in the modal controler */
+        // Open a modal dialog to ask user for confirmation of action -
+        // requests are executed in the ModalController
         $scope.openModal = function (id, action) {
             var modalInstance = $modal.open({
                 templateUrl: './templates/partials/editAd-modal.html',
@@ -60,8 +61,8 @@ adsAppControllers.controller('UserAdsController',
             });
         };
 
-        /* open a modal dialog for user to edit ad;
-         -request is executed in the EditAdModal controler */
+        // Open a modal dialog for user to edit ad -
+        // request is executed in the EditAdModal controller
         $scope.openEditModal = function (id) {
             var modalInstance = $modal.open({
                 templateUrl: './templates/partials/editAd-modal.html',

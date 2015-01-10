@@ -3,16 +3,15 @@
 var adsAppControllers = adsAppControllers || angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('RegisterController',
-    function registerController($scope, $rootScope, townsData,
-                                authenticationService, authorizationService) {
-
+    function registerController($scope, $rootScope, townsData, $location,
+                                authenticationService, authorizationService, notifyService) {
         $scope.registrationActive = true;
 
         townsData.getAll()
             .then(function (data) {
                 $scope.townsData = data;
             }, function (error) {
-                $rootScope.$broadcast('errorHandle');
+                notifyService.showError("Cannot load Towns", error);
             });
 
         $scope.register = function (credentials, registerForm) {
@@ -21,12 +20,11 @@ adsAppControllers.controller('RegisterController',
                     .then(function (data) {
                         authorizationService.setUserSession(data);
                         $scope.registrationActive = false;
-                        $rootScope.$broadcast('operatonSuccessfull', 'User account created.Please login');
+                        $location.path('/login');
+                        notifyService.showError('User account created. Please login');
                     }, function (error) {
-                        // TODO;
+                        notifyService.showError('Please fill correctly all inputs fields', error);
                     });
             }
         };
-
-        // TODO: handle errors with registration data
     });

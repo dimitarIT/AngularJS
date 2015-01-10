@@ -11,7 +11,7 @@ adsApp.controller('EditAdModalController',
                 imageDataUrl: data.imageDataUrl ? data.imageDataUrl : './img/no_image_available.svg',
                 categoryId: data.categoryId ? data.categoryId : null,
                 townId: data.townId ? data.townId : null,
-                changeImage: false,
+                changeImage: false
             };
         }, function(error) {
             $rootScope.$broadcast('alertMessage');

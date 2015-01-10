@@ -1,7 +1,5 @@
-<!--// TODO: Add Redirection and error checks-->
-
 <div class="col-lg-8 col-centered">
-	<form class="form-horizontal" name="registerForm">
+	<form class="form-horizontal" name="registerForm" ng-if="registrationActive">
 		<fieldset>
 			<legend>Register</legend>
 			<div class="form-group">
@@ -52,10 +50,10 @@
 				<label class="col-lg-2 control-label">Town</label>
 
 				<div class="col-lg-10">
-				<select class="form-control" id="select" name="town" ng-model="credentials.town" >
-					<option value="" disabled selected>Select your option</option>
-					<option ng-repeat="town in townsData" value="{{town.id}}">{{town.name}}</option>
-				</select>
+					<select class="form-control" id="select" name="town" ng-model="credentials.town">
+						<option value="" disabled selected>Select your option</option>
+						<option ng-repeat="town in townsData" value="{{town.id}}">{{town.name}}</option>
+					</select>
 				</div>
 			</div>
 

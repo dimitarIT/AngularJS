@@ -8,7 +8,7 @@ adsApp.controller('MainController',
             $location.path('/home');
         };
 
-        /* Handle refreshing page to store services state and user data */
+        // Handle refreshing page to store services state and user data
         function init() {
             $scope.loading = true;
             if (authorizationService.userIsLogged()) {
@@ -27,7 +27,7 @@ adsApp.controller('MainController',
                 $scope.clickedMyAdds = false;
             }
 
-            /* This event is sent by LoginController when the user has logged*/
+            // This event is sent by LoginController when the user has logged
             $rootScope.$on("userHasLogged", function () {
                 $scope.userIsLogged = true;
                 $scope.currentUser = authorizationService.getUsername();
@@ -56,7 +56,7 @@ adsApp.controller('MainController',
         };
         $scope.clickedMyAds = true;
 
-        /* redirect user to publish-new-add page */
+        // Redirect user to publish-new-add page
         $scope.publishNewAdd = function () {
             if (authorizationService.userIsLogged()) {
                 $scope.userIsLogged = true;
@@ -65,7 +65,7 @@ adsApp.controller('MainController',
             }
         };
 
-        /* redirect user to edit-profile page */
+        // Redirect user to edit-profile page
         $scope.editProfile = function () {
             if (authorizationService.userIsLogged()) {
                 $scope.userIsLogged = true;
@@ -74,6 +74,7 @@ adsApp.controller('MainController',
             }
         };
 
+        // Activate clicked links on page refresh
         $scope.getClass = function (path) {
             if ($location.path() === path) {
                 return "active";

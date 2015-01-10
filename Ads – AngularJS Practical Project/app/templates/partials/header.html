@@ -1,4 +1,3 @@
-<!-- Navigation box for anonymous site visitors -->
 <div class="navbar navbar-default">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -11,20 +10,25 @@
 		<ul class="nav navbar-nav">
 			<li ng-if="!userIsLogged" class="active"><a href="#/login/">Login</a></li>
 			<li ng-if="!userIsLogged"><a href="#/register/">Register</a></li>
+
 			<li ng-if="userIsLogged">
 				<a href="">
 					<p class="text-danger">Welcome Home: {{currentUser}}</p>
 				</a>
 			</li>
+
 			<li ng-if="userIsLogged">
 				<a ng-class="getClass('/user/ads')" ng-click="loadUserAds('')">My Ads</a>
 			</li>
+
 			<li ng-if="userIsLogged">
 				<a ng-class="getClass('/user/publish-new-add')" ng-click="publishNewAdd()">Publish New Ad</a>
 			</li>
+
 			<li ng-if="userIsLogged">
 				<a ng-class="getClass('/user/profile')" ng-click="editProfile()">Edit Profile</a>
 			</li>
+
 			<li class="pull-right" ng-if="userIsLogged" ng-click="logout()"><a>Logout</a></li>
 		</ul>
 	</div>
