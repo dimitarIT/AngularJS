@@ -5,7 +5,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-lg-10">
 				<ul class="all-ads-list">
 					<li dir-paginate="ad in userAdsData.ads | filter: query | itemsPerPage: adsPerPage"
 						total-items="totalAds" class="well">
@@ -39,28 +39,24 @@
 									<div class="col-lg-2 ad-info-text"><strong>Status:</strong></div>
 									<div class="col-lg-9  well well-sm">{{ad.status}}</div>
 
-									<div class="ad-edit-buttons"
-										 ng-if="ad.status === 'WaitingApproval' ||
+									<span ng-if="ad.status === 'WaitingApproval' ||
 										  ad.status === 'Published'">
 										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
 										   ng-click="openModal(ad.id, 'Deactivate')">Deactivate</a>
-									</div>
-									<div class="ad-edit-buttons"
-										 ng-if="ad.status === 'Inactive' || ad.status === 'Rejected' ">
+									</span>
+									<span ng-if="ad.status === 'Inactive' || ad.status === 'Rejected' ">
 										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
 										   ng-click="openEditModal(ad.id)">Edit</a>
-									</div>
-									<div class="ad-edit-buttons"
-										 ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'">
+									</span>
+									<span ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'">
 										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
 										   ng-click="openModal(ad.id, 'Publish again')">Publish
 											<span class="avoidwrap">again</span></a>
-									</div>
-									<div class="ad-edit-buttons"
-										 ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'">
+									</span>
+									<span ng-if="ad.status === 'Inactive' || ad.status === 'Rejected'">
 										<a class="btn btn-info ad-edit-buttons-link" data="{{ad.id}}"
 										   ng-click="openModal(ad.id, 'Delete')">Delete</a>
-									</div>
+									</span>
 								</div>
 							</div>
 						</div>

@@ -53,7 +53,7 @@ adsAppControllers.controller('UserPublishAdController',
                     $rootScope.$broadcast('alertMessage', 'Advertisement submitted for approval.Once approved, it will be published.');
 
                     /* clean publish ad form */
-                    $('.ad-image').attr('src', './img/no.image-uploaded-mini.jpg');
+                    $('.ad-image').attr('src', './img/no_image_available.svg');
                     $('.image-title').attr('value', '');
                     $('#title').val('');
                     $('#text').val('');
