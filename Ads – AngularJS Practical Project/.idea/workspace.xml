@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93323667-cc8b-4acd-bdb7-048eb80c2312" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\angular\ui-bootstrap-custom-0.12.0.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\angular\ui-bootstrap-custom-tpls-0.12.0.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\GIT\AngularJS\Ads – AngularJS Practical Project\app\lib\angular\ui-bootstrap-tpls-0.12.0.js" afterPath="" />
+    <list default="true" id="93323667-cc8b-4acd-bdb7-048eb80c2312" name="Default" comment="- initial">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/ui-bootstrap-custom-0.12.0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/ui-bootstrap-custom-tpls-0.12.0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular/ui-bootstrap-tpls-0.12.0.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="fe9d810e-693e-4843-bf12-e3897620dfe3" name="Failed commit: Default" comment="reformatting code and started with home-view" />
@@ -651,7 +651,13 @@
       <option name="project" value="LOCAL" />
       <updated>1420889937998</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="- initial">
+      <created>1420890038551</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1420890038551</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -714,7 +720,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="- Navbar added&#10;- Main controller added&#10;- Login added&#10;- register added" />
     <MESSAGE value="- Home Page&#10;- Main controller added&#10;- Added 'login' and 'register' in 'routeProvider'" />
     <MESSAGE value="- Service for 'towns' added" />
     <MESSAGE value="-  trying to add pagination" />
@@ -739,7 +744,8 @@
     <MESSAGE value="- added services for ads" />
     <MESSAGE value="- bugs, bugs, bugs" />
     <MESSAGE value="- added noty, ui" />
-    <option name="LAST_COMMIT_MESSAGE" value="- added noty, ui" />
+    <MESSAGE value="- initial" />
+    <option name="LAST_COMMIT_MESSAGE" value="- initial" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
