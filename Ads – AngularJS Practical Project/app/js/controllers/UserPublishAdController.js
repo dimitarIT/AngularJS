@@ -54,7 +54,8 @@ adsAppControllers.controller('UserPublishAdController',
             if (newAdForm.$valid && authorizationService.userIsLogged()) {
                 adsData.publishAd(newAdData)
                     .then(function (data) {
-                        notifyService.showInfo('ReservedAdvertisement submitted for approval. Once approved, it will be published!');
+                        notifyService.showInfo
+                        ('Advertisement submitted for approval. Once approved, it will be published!');
 
                         // Clean publish ad form
                         $('.ad-image').attr('src', './img/no_image_available.svg');

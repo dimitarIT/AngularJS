@@ -10,10 +10,7 @@ adsAppControllers.controller('LoginController',
                 authenticationService.login(credentials)
                     .then(function (data) {
                         authorizationService.setUserSession(data);
-                        //from parent to Children
                         $rootScope.$broadcast('userHasLogged');
-                        //$rootScope.$emit()
-                        //from children to parent
                         $location.path('/home');
                     }, function (error) {
                         $scope.errorOccurred = true;
