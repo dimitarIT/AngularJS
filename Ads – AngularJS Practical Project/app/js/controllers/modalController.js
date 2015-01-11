@@ -34,7 +34,7 @@ adsApp.controller('ModalController',
                     adsData.deleteAd(id)
                         .then(function (data) {
                             $route.reload();
-                            notifyService.showInfo('Ad deleted', data.message);
+                            notifyService.showInfo('Advertisement deleted.', data.message);
                         }, function (error) {
                             notifyService.showError('Cannot delete ad', error);
                         });

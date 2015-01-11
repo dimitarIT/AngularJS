@@ -1,6 +1,6 @@
 'use strict';
 
-var adsAppControllers = adsAppControllers || angular.module('adsAppControllers', []);
+var adsAppControllers = adsAppControllers || new angular.module('adsAppControllers', []);
 
 adsAppControllers.controller('LoginController',
     function loginController($scope, $rootScope, $location,
@@ -10,7 +10,10 @@ adsAppControllers.controller('LoginController',
                 authenticationService.login(credentials)
                     .then(function (data) {
                         authorizationService.setUserSession(data);
+                        //from parent to Children
                         $rootScope.$broadcast('userHasLogged');
+                        //$rootScope.$emit()
+                        //from children to parent
                         $location.path('/home');
                     }, function (error) {
                         $scope.errorOccurred = true;
