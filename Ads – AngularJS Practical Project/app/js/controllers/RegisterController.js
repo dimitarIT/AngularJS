@@ -21,7 +21,7 @@ adsAppControllers.controller('RegisterController',
                         authorizationService.setUserSession(data);
                         $scope.registrationActive = false;
                         $location.path('/login');
-                        notifyService.showError('User account created. Please login');
+                        notifyService.showError('User account created. Please login!');
                     }, function (error) {
                         notifyService.showError('Please fill correctly all inputs fields', error);
                     });

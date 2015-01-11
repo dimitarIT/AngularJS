@@ -80,7 +80,7 @@ adsApp.controller('EditAdModalController',
                 .then(function (data) {
                     $modalInstance.close();
                     $route.reload();
-                    notifyService.showInfo('Ad edited');
+                    notifyService.showInfo('ReservedAdvertisement edited. Do not forget to submit it for publishing.');
                 }, function (error) {
                     $modalInstance.close();
                     $route.reload();

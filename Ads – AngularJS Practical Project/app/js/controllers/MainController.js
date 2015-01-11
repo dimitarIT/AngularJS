@@ -15,7 +15,7 @@ adsApp.controller('MainController',
                 $scope.userIsLogged = true;
                 $scope.currentUser = authorizationService.getUsername();
 
-                // show ads nav on refresh if clicked
+                // Show ads nav on refresh if clicked
                 var currentUrl = $location.path();
                 if (currentUrl === '/user/ads' || currentUrl === '/user/ads/published' ||
                     currentUrl === '/user/ads/waitingapproval' || currentUrl === '/user/ads/inactive' ||

@@ -35,7 +35,7 @@ adsAppControllers.controller('UserProfileController',
             userProfile.ediProfile(editProfileForm)
                 .then(function (data) {
                     $route.reload();
-                    notifyService.showInfo('Your profile is update', data.message);
+                    notifyService.showInfo('User profile successfully updated.', data.message);
                 }, function (error) {
                     notifyService.showError('Cannot edit user profile', error);
                 });
